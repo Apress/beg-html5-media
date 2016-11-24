@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 1</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 3: example 1</h1>
+
+      <video controls autoplay>
+        <source src="video/HK_Traffic.mp4" type="video/mp4">
+        <source src="video/HK_Traffic.webm" type= "video/webm">
+      </video>
+    </div>
+    
+    <script type="text/javascript">
+      videos = document.getElementsByTagName("video");
+      video = videos[0];
+      video.controls = false;
+      video.width = '400';
+      alert(video.autoplay);
+    </script>
+   
+  </body>
+</html>

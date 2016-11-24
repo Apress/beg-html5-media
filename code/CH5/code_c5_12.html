@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 12</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+      #ambience {
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: linear;
+        width: 420px; height: 300px;
+        outline: black solid 10px;
+      }
+      #canvas {
+        position: relative;
+        left: 30px; top: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 12</h1>
+
+      <div id="ambience">
+        <canvas id="canvas" width="360" height="240"></canvas>
+      </div>
+      <video autoplay style="display: none;">
+        <source src="video/HelloWorld.mp4"  type="video/mp4">
+        <source src="video/HelloWorld.webm" type="video/webm">
+      </video>
+      <canvas id="scratch" width="360" height="240" style="display: none;">
+      </canvas>
+    </div>
+
+    <script>
+      var context, sctxt, video, ambience;
+      ambience = document.getElementById("ambience");
+      video = document.getElementsByTagName("video")[0];
+      canvas = document.getElementsByTagName("canvas")[0];
+      context = canvas.getContext("2d");
+      context.globalCompositeOperation = "destination-in";
+      scratch = document.getElementById("scratch");
+      sctxt = scratch.getContext("2d");
+      gradient = context.createRadialGradient(180,120,0, 180,120,180);
+      gradient.addColorStop(0, "rgba( 255, 255, 255, 1)");
+      gradient.addColorStop(0.7, "rgba( 125, 125, 125, 0.8)");
+      gradient.addColorStop(1, "rgba( 0, 0, 0, 0)");
+      video.addEventListener("play", paintAmbience, false);
+
+      function paintAmbience() {
+        // set up scratch frame
+        sctxt.drawImage(video, 0, 0, 360, 240);
+        // get average color for frame and transition to it
+        frame = sctxt.getImageData(0, 0, 360, 240);
+        color = getColorAvg(frame);
+        ambience.style.backgroundColor =
+          'rgba('+color[0]+','+color[1]+','+color[2]+',0.8)';
+        // paint video image
+        context.putImageData(frame, 0, 0);
+        // throw gradient onto canvas
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, 360, 240);
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(paintAmbience);
+      }
+      function getColorAvg(frame) {
+        r = 0;
+        g = 0;
+        b = 0;
+        // calculate average color from image in canvas
+        for (var i = 0; i < frame.data.length; i += 4) {
+          r += frame.data[i];
+          g += frame.data[i + 1];
+          b += frame.data[i + 2];
+        }
+        r = Math.ceil(r / (frame.data.length / 4));
+        g = Math.ceil(g / (frame.data.length / 4));
+        b = Math.ceil(b / (frame.data.length / 4));
+        return Array(r, g, b);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 2: example 33</title>
+    <style type="text/css">
+    #main {
+        position:absolute;
+        color: white;
+        line-height: 40px;
+        display:block;
+        font-size: 36px;
+        margin-left: 70px;
+        margin-top: 20px;
+        z-index: 20;
+        list-style-type: none;
+    }
+
+    #main li {
+        background-color: #000;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-family: arial, sans-serif;
+        color: #fff;
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+    #video_bkgrnd {
+        position: absolute;
+        bottom:0px;
+        right:0px;
+        min-width:100%;
+        min-height:100%;
+        width:auto;
+        height:auto;
+        z-index: -1000;
+        overflow:hidden;
+    }
+    </style>
+  </head>
+
+<body>
+
+    <video id="video_bkgrnd" poster="img/BabyVulture.jpg" muted autoplay loop >
+        <source src="video/Vultures.mp4" type="video/mp4"/>
+        <source src="video/Vultures.webm" type="video/webm"/>
+        <img src="img/BabyVulture.jpg"/><!-- the fallback image -->
+    </video>
+
+    <h1>Beginning HTML5 media</h1>
+    <h2>The basic code:</h2>
+    <p>Here is an example of a Video as background:</p>
+
+    <ul id= "main">
+        <li>Silvia Pfeiffer </li>
+        <li><small>Author</small></li>
+        <li>Tom Green</li>
+        <li><small>Author</small></li>
+    </ul>    
+  
+</body>
+</html>

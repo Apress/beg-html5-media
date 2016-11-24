@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 12</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 12</h1>
+
+      <video poster="img/Monty.jpg" controls width="50%" autoplay>
+        <source src="video/Monty.mp4"  type="video/mp4">
+        <source src="video/Monty.webm" type="video/webm">
+      
+        <track id="track1" label="English" src="tracks/Monty_subs_en.vtt" kind="subtitles" srclang="en" default>
+      </video>
+      <h3>TextTrack object:</h3>
+      <p id="values"><b>When loading:</b><br/></p>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName('video')[0];
+      var track = document.getElementsByTagName('track')[0];
+      var values = document.getElementById('values');
+
+      function loaded() {
+          var cue;
+          if (typeof VTTCue != "undefined") {
+              cue = new VTTCue(0.00, 5.00, "This is a script created cue.");
+          } else { // for Safari 7
+              cue = new TextTrackCue(0.00, 5.00, "This is a script created cue.");
+          }
+          values.innerHTML += "Number of cues: " + track.track.cues.length + "<br/>";
+          values.innerHTML += "<b>After adding cue:</b><br/>"
+          track.track.addCue(cue);
+          values.innerHTML += "Number of cues: " + track.track.cues.length + "<br/>";        
+      }
+      video.addEventListener("loadedmetadata", loaded, false);
+
+      function playing() {
+          values.innerHTML += "<b>After play start:</b><br/>"
+          values.innerHTML += "Number of cues: " + track.track.cues.length + "<br/>";
+          values.innerHTML += "First cue: " + track.track.cues[0].text + "<br/>";
+          function cuechanged() {
+              track.track.removeCue(track.track.cues[1]);
+              values.innerHTML += "<b>After removing cue:</b><br/>"
+              values.innerHTML += "Number of cues: " + track.track.cues.length + "<br/>";
+              video.pause();
+          }
+          track.track.addEventListener("cuechange", cuechanged, false);
+      }
+      video.addEventListener("play", playing, false);
+    </script>
+</html>

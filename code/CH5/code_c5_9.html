@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 9</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 9</h1>
+
+      <p>
+        <video controls autoplay height="240" width="360">
+          <source src="video/HelloWorld.mp4"  type="video/mp4">
+          <source src="video/HelloWorld.webm" type="video/webm">
+        </video>
+      </p>
+      <p>
+        <canvas width="1000" height="400" style="border: 1px solid black;">
+        </canvas>
+        <canvas id="scratch" width="360" height="240" style="display: none;"></canvas>
+      </p>
+    </div>
+
+    <script>
+      var context, sctxt, video;
+      video = document.getElementsByTagName("video")[0];
+      canvases = document.getElementsByTagName("canvas");
+      canvas = canvases[0];
+      scratch = canvases[1];
+      context = canvas.getContext("2d");
+      sctxt = scratch.getContext("2d");
+      video.addEventListener("play", paintFrame, false);
+      function paintFrame() {
+        // set up scratch frame
+        w = 270; h = 180;
+        sctxt.drawImage(video, 0, 0, w, h);
+        
+        // width should be between -500 and +500
+        width = -250;
+        // right side scaling should be between 0 and 200%
+        scale = 2;
+
+        // canvas width and height
+        cw = 1000; ch = 400;
+        // number of columns to draw
+        columns = Math.abs(width);
+        // display the picture mirrored?
+        mirror = (width > 0) ? 1 : -1;
+        // origin of the output picture
+        ox = cw/2; oy= (ch-h)/2;
+        // slice width
+        sw = columns/w;
+        // slice height increase steps
+        sh = (h*scale-h)/columns;
+        
+        // Loop over each pixel column of the output picture
+        for (x = 0; x < w; x++) {
+          // place output columns
+          dx = ox + mirror*x*sw;
+          dy = oy - x*sh/2;
+          // scale output columns
+          dw = sw;
+          dh = h + x*sh;
+          // draw the pixel column
+          context.drawImage(scratch, x, 0, 1, h, dx, dy, dw, dh);	
+        }
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(paintFrame);
+      }
+    </script>
+  </body>
+</html>

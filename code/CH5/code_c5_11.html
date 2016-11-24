@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 11</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 11</h1>
+
+      <video autoplay style="display: none;" >
+        <source src="video/HelloWorld.mp4"  type="video/mp4">
+        <source src="video/HelloWorld.webm" type="video/webm">
+      </video>
+      <canvas width="720" height="480" style="border: 1px solid black;">
+      </canvas>
+      <canvas id="scratch" width="180" height="120" style="display:none;">
+      </canvas>
+    </div>
+
+    <script>
+      var context, sctxt, video;
+      video = document.getElementsByTagName("video")[0];
+      canvas = document.getElementsByTagName("canvas")[0];
+      context = canvas.getContext("2d");
+      scratch = document.getElementById("scratch");
+      sctxt = scratch.getContext("2d");
+      video.addEventListener("play", paintFrame, false);
+
+      function paintFrame() {
+        sctxt.drawImage(video, 0, 0, 180, 120);
+        pattern = context.createPattern(scratch, 'repeat');
+        context.fillStyle = pattern;
+        context.fillRect(0, 0, 720, 480);
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(paintFrame);
+      }
+    </script>
+  </body>
+</html>

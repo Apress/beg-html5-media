@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 20</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 20</h1>
+    <p>Javascript manipulation of audio data.<p>
+    <audio autoplay controls src="audio/ticking.wav"></audio>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+
+    var noiser = audioCtx.createScriptProcessor();
+    source.connect(noiser);
+    noiser.connect(audioCtx.destination);
+
+    noiser.onaudioprocess = function(event) {
+      var inputBuffer = event.inputBuffer;
+      var outputBuffer = event.outputBuffer;
+
+      for (var channel = 0; channel < inputBuffer.numberOfChannels; channel++) {
+        var inputData = inputBuffer.getChannelData(channel);
+        var outputData = outputBuffer.getChannelData(channel);
+
+        for (var sample = 0; sample < inputBuffer.length; sample++) {
+          outputData[sample] = inputData[sample] + (Math.random() * 0.01);
+        }
+      }
+    };
+
+    mediaElement.addEventListener("ended", function() {
+          noiser.disconnect(audioCtx.destination);
+    }, false);
+    </script>
+  </body>
+</html>

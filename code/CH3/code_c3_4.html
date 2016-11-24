@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 4</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 4</h1>
+
+      <audio controls autoplay>
+          <source src="audio/Shivervein.mp3" type="audio/mp4">
+          <source src="audio/Shivervein.ogg" type="audio/ogg">
+      </audio>
+      
+      <p>volume on load: <span id="volume_first"></span>.</p>
+      <p>volume after volumechange: <span id="volumechange"></span>.</p>
+      <p>volume after timeupdate: <span id="timeupdate"></span>.</p>
+    </div>
+
+    <script type="text/javascript">
+      var audio = document.getElementsByTagName("audio")[0];
+      var span1 = document.getElementById("volume_first");
+      var span2 = document.getElementById("volumechange");
+      var span3 = document.getElementById("timeupdate");
+
+      span1.innerHTML = audio.volume;
+
+      function span2Update(evt) { span2.innerHTML = audio.volume; }
+      function span3Update(evt) {
+        if (audio.volume > 0.1) {
+          audio.volume = audio.volume - 0.05;
+        } else {
+          audio.volume = 1.0;
+        }
+        span3.innerHTML = audio.volume;
+      }
+
+      audio.addEventListener("volumechange", span2Update, false);
+      audio.addEventListener("timeupdate", span3Update, false);
+    </script>
+
+  </body>
+</html>

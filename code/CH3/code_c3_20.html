@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 20</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <link href="http://vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/4.6/video.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 20</h1>
+        <h3>Use the video.js player to stream video into a web page </h3>
+        <p>Here is the result :</p>
+  
+        <video id="MY_VIDEO_1" class="video-js vjs-default-skin" controls
+               preload="auto" width="683" height="432" poster="img/BabyVulture.jpg"
+               data-setup="{}">
+            <source src="video/Vultures.mp4" type='video/mp4'/>
+            <source src="video/Vultures.webm" type='video/webm'/>
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            </p>
+        </video>
+    </div>
+
+</body>
+</html>

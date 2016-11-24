@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 18</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 18</h1>
+
+        <video controls width="400">
+        </video>
+        
+        <p>CurrentSrc on start: <span id="currentSrc_first"></span>.</p>
+        <p>CurrentSrc after loadedmetadata: <span id="currentSrc_loadedmetadata"></span>.</p>
+        <p>CurrentTime on pause: <span id="currentTime_pause"></span>.</p>
+    </div>
+    
+    <script type="text/javascript">
+        var video = document.getElementsByTagName("video")[0];
+        var source = document.getElementsByTagName("source");
+        var span1 = document.getElementById("currentSrc_first");
+        var span2 = document.getElementById("currentSrc_loadedmetadata");
+        var span3 = document.getElementById("currentTime_pause");
+
+        span1.innerHTML = video.currentSrc;
+        if (video.canPlayType("video/webm") != "") {
+            video.src = "video/HK_Traffic.webm";
+        } else if (video.canPlayType("video/mp4") != "") {
+            video.src = "video/HK_Traffic.mp4";
+        }
+        video.play();
+
+        function span2Update(evt) { span2.innerHTML = video.currentSrc; }
+        function callpause(evt) {
+            if (video.currentTime > video.duration/2) {
+                video.pause();
+            }
+        }
+        function span3Update(evt) {  span3.innerHTML = video.currentTime;  }
+
+        video.addEventListener("loadedmetadata", span2Update, false);
+        video.addEventListener("timeupdate", callpause, false);
+        video.addEventListener("pause", span3Update, false);
+    </script>
+
+</body>
+</html>

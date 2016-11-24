@@ -1,0 +1,208 @@
+WEBVTT FILE
+
+1
+00:00:08.124 --> 00:00:10.742
+Les stations de travail et ordinateurs haut de gamme sont capables
+
+2
+00:00:10.742 --> 00:00:14.749
+de manipuler le son numérique aisément depuis une quinzaine d'années.
+
+3
+00:00:14.749 --> 00:00:17.470
+C'est seulement depuis à peu près cinq ans qu'un ordinateur décent
+
+4
+00:00:17.470 --> 00:00:21.643
+peut manipuler de la vidéo sans du matériel dédié coûteux.
+
+5
+00:00:21.643 --> 00:00:25.400
+De nos jours, même les ordinateurs bas de gamme sont assez puissants
+
+6
+00:00:25.400 --> 00:00:28.092
+et ont la mémoire nécessaire pour manipuler de la vidéo,
+
+7
+00:00:28.092 --> 00:00:30.479
+sans trop de difficultés.
+
+8
+00:00:30.479 --> 00:00:33.579
+Donc, comme tout le monde a accès à ce bon matériel à bas pris,
+
+9
+00:00:33.579 --> 00:00:36.651
+de plus en plus de gens veulent, évidemment, faire des choses intéressantes
+
+10
+00:00:36.651 --> 00:00:39.908
+avec son et images numériques, en particulier la diffusion continue.
+
+11
+00:00:39.908 --> 00:00:44.017
+YouTube fut le premier gros succès, et tout le monde veut être le suivant.
+
+12
+00:00:44.017 --> 00:00:47.413
+C'est une bonne chose, car tout ceci est fascinant!
+
+13
+00:00:48.250 --> 00:00:51.179
+Il est facile de trouver des utilisateurs pour les média numériques.
+
+14
+00:00:51.179 --> 00:00:54.649
+Mais ici, je m'adresse aux ingénieurs, aux mathématiciens,
+
+15
+00:00:54.649 --> 00:00:57.869
+aux hackers, à ceux qui s'intéressent à la découverte de nouvelles choses
+
+16
+00:00:57.869 --> 00:01:01.302
+et veulent créer et faire avancer la technologie.
+
+17
+00:01:01.302 --> 00:01:03.282
+Les gens qui ont la même passion que moi.
+
+18
+00:01:04.250 --> 00:01:08.723
+Les média numériques, et la compression en particulier, sont vus comme un sujet
+
+19
+00:01:08.723 --> 00:01:12.822
+spécialisé, bien plus compliqué que le reste de l'informatique.
+
+20
+00:01:12.822 --> 00:01:15.700
+Les grandes compagnies dans ce domaine ne font rien pour diminuer cette perception,
+
+21
+00:01:15.700 --> 00:01:19.734
+qui les aide à justifier le nombre extrême de brevets triviaux qu'elles détiennent.
+
+22
+00:01:19.734 --> 00:01:23.870
+Ces compagnies aiment cette image de leurs chercheurs en tant que la crème de la crème,
+
+23
+00:01:23.870 --> 00:01:27.738
+tellement plus intelligents que les autres que leurs idées brillantes
+
+24
+00:01:27.738 --> 00:01:29.903
+ne peuvent être comprises par de simples mortels.
+
+25
+00:01:30.625 --> 00:01:33.716
+Et c'est du n'importe quoi.
+
+26
+00:01:35.205 --> 00:01:38.900
+Son numérique, images numériques, diffusion en continu, compression,
+
+27
+00:01:38.900 --> 00:01:42.738
+ceux-ci offrent des problèmes difficiles et intellectuellement stimulants,
+
+28
+00:01:42.738 --> 00:01:44.662
+comme toute autre discipline.
+
+29
+00:01:44.662 --> 00:01:47.929
+L'apparence de difficulté extrême est due au nombre restreint de personnes dans ce domaine.
+
+30
+00:01:47.929 --> 00:01:51.223
+Ce nombre restreint n'est en fait dû qu'à la rareté du matériel dédié
+
+31
+00:01:51.223 --> 00:01:54.665
+requis jusqu'à aujourd'hui.
+
+32
+00:01:54.665 --> 00:01:58.792
+Mais maintenant, la grande majorité des gens qui regardent cette vidéo
+
+33
+00:01:58.792 --> 00:02:03.317
+ont un ordinateur assez puissant pour jouer dans la cour des grands.
+
+34
+00:02:05.926 --> 00:02:11.108
+Il y a des batailles en cours à propos de HTML5, des navigateurs Web,
+
+35
+00:02:11.108 --> 00:02:13.671
+de la vidéo, et ouvert contre fermé.
+
+36
+00:02:13.671 --> 00:02:17.048
+Alors maintenant est un bon moment pour s'intéresser à tout cela.
+
+37
+00:02:17.048 --> 00:02:20.000
+Où commencer ? Le plus simple est probablement avec la technologie
+
+38
+00:02:20.000 --> 00:02:22.619
+que nous avons maintenant.
+
+39
+00:02:23.500 --> 00:02:25.071
+Ceci est une introduction.
+
+40
+00:02:25.071 --> 00:02:28.180
+Comme toute introduction, beaucoup de détails seront passés sous silence,
+
+41
+00:02:28.180 --> 00:02:30.882
+pour que nous puissions avoir une vue d'ensemble.
+
+42
+00:02:30.882 --> 00:02:33.908
+Beaucoup de personnes connaissent probablement déjà ce dont je vais parler,
+
+43
+00:02:33.908 --> 00:02:36.378
+au moins dans cet épisode.
+
+44
+00:02:36.378 --> 00:02:39.293
+D'autres, par contre, trouveront peut-être que je vais trop vite,
+
+45
+00:02:39.293 --> 00:02:44.558
+s'ils n'ont jamais abordé le sujet; si c'est votre cas, ne vous en faites pas.
+
+46
+00:02:44.558 --> 00:02:48.629
+Le plus important est de retenir les quelques idées qui vous marquent le plus.
+
+47
+00:02:48.629 --> 00:02:52.497
+Faites bien attention à la terminologie qui à rapport à toutes ces idées,
+
+48
+00:02:52.479 --> 00:02:56.078
+puisque avec elle, vous pouvez utiliser Google et Wikipedia pour approfondir
+
+49
+00:02:56.078 --> 00:02:57.753
+vos connaissances à volonté.
+
+50
+00:02:57.753 --> 00:03:00.094
+Donc, sans plus attendre,
+
+51
+00:03:00.094 --> 00:03:03.351
+bienvenue à un passe-temps pas comme les autres.
+
+
+

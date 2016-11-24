@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 6</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 6</h1>
+    <p>Dynamic compression of an audio signal.<p>
+    <audio autoplay controls src="audio/Shivervein_Razorpalm.wav"></audio>
+    <p>Toggle Compression: <button value="0">Off</button></p>
+
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+
+    // Create a compressor node
+    var compressor = audioCtx.createDynamicsCompressor();
+    compressor.threshold.value = -50;
+    compressor.knee.value = 20;
+    compressor.ratio.value = 12;
+    compressor.reduction.value = -40;
+    compressor.attack.value = 0.003;
+    compressor.release.value = 0.25;
+
+    mediaElement.addEventListener('play', function() {
+      source.connect(audioCtx.destination);
+    });
+
+    var button = document.getElementsByTagName('button')[0];
+    button.addEventListener('click', function() {
+      if (this.value == 1) {
+        this.value = 0;
+        this.innerHTML = "Off";
+        source.disconnect(audioCtx.destination);
+        source.connect(compressor);
+        compressor.connect(audioCtx.destination);
+      } else {
+        this.value = 1;
+        this.innerHTML = "On";
+        source.disconnect(compressor);
+        compressor.disconnect(audioCtx.destination);
+        source.connect(audioCtx.destination);
+      }
+    });
+    </script>
+  </body>
+</html>

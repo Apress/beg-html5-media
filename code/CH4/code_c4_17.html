@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 17</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 17</h1>
+
+      <video poster="img/Monty.jpg" controls width="50%">
+        <source src="video/Monty.mp4"  type="video/mp4">
+        <source src="video/Monty.webm" type="video/webm">
+        <track id="track1" label="English" src="tracks/Monty_subs_en_settings.vtt" kind="subtitles" srclang="en" default>
+      </video>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName("video")[0];
+
+      function loaded() {
+          video.currentTime = 8;
+          video.play();
+      }
+      function update() {
+          if (video.currentTime > 10) {
+              video.pause();
+          }
+      }
+      video.addEventListener("loadedmetadata", loaded, false);
+      video.addEventListener("timeupdate", update, false);
+    </script>
+  </body>
+</html>

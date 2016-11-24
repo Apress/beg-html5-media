@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 7</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 7</h1>
+
+      <video controls poster="img/ElephantDreams.png">
+        <source src="video/ElephantDreams.mp4"  type="video/mp4">
+        <source src="video/ElephantDreams.webm" type="video/webm">
+        <track src="tracks/ElephantDreams_zh.vtt" srclang="zh" kind="subtitles">
+        <track src="tracks/ElephantDreams_jp.vtt" srclang="ja" kind="captions">
+        <track src="tracks/ElephantDreams_en.vtt"
+               srclang="en" kind="metadata" label="Metadata">
+        <track src="tracks/ElephantDreams_chapters_en.vtt"
+               srclang="en" kind="chapters"  label="Chapters">
+        <track src="tracks/ElephantDreams_audesc_en.vtt"
+               srclang="en" kind="descriptions" label="Descriptions">
+      </video>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+WEBVTT FILE
+
+1
+00:00:08.124 --> 00:00:10.742
+Estações de trabalho e bons computadores pessoais têm sido capazes de
+
+2
+00:00:10.742 --> 00:00:14.749
+manipular áudio digital bastante facilmente há uns 15 anos.
+
+3
+00:00:14.749 --> 00:00:17.470
+Faz apenas uns 5 anos que uma estação de trabalho decente é capaz de
+
+4
+00:00:17.470 --> 00:00:21.643
+lidar com dados não-compactados de vídeo sem o auxílio de hardware especializado e caro.
+
+5
+00:00:21.643 --> 00:00:25.400
+Mas hoje até os PCs caseiros mais baratos têm o poder de processamento
+
+6
+00:00:25.400 --> 00:00:28.092
+e o espaço de armazenamento necessários para realmente jogar dados não-compactados de vídeo pra cá e pra lá,
+
+7
+00:00:28.092 --> 00:00:30.479
+pelo menos o suficiente para fazê-lo sem um esforço demasiado.
+
+8
+00:00:30.479 --> 00:00:33.579
+Por isso, agora que todo mundo possui este equipamento barato e com este potencial,
+
+9
+00:00:33.579 --> 00:00:36.651
+mais gente, como seria de se esperar, quer fazer coisas
+
+10
+00:00:36.651 --> 00:00:39.908
+interessantes com mídias digitais, especialmente <i>streaming</i>.
+
+11
+00:00:39.908 --> 00:00:44.017
+YouTube foi o primeiro enorme sucesso, e agora todo mundo quer entrar nessa.
+
+12
+00:00:44.017 --> 00:00:47.413
+Mas isso é ótimo!  Porque estas coisas são muito divertidas!
+
+13
+00:00:48.250 --> 00:00:51.179
+Não é difícil encontrar consumidores para mídias digitais.
+
+14
+00:00:51.179 --> 00:00:54.649
+Mas aqui eu gostaria de me dirigir aos engenheiros, aos matemáticos,
+
+15
+00:00:54.649 --> 00:00:57.869
+aos hackers, às pessoas que estão interessadas em descobrir
+
+16
+00:00:57.869 --> 00:01:01.302
+e fazer coisas e construir a própria tecnologia.
+
+17
+00:01:01.302 --> 00:01:03.282
+Pessoas assim como eu.
+
+18
+00:01:04.250 --> 00:01:08.723
+Imagina-se que assuntos relacionados a mídias digitais, especialmente compressão, são super-elitistas,
+
+19
+00:01:08.723 --> 00:01:12.822
+de algum modo incrivelmente mais difíceis do que qualquer outra coisa em ciência da computação.
+
+20
+00:01:12.822 --> 00:01:15.700
+Os grandes industriais do ramo não se incomodam nem um pouco com esta percepção;
+
+21
+00:01:15.700 --> 00:01:19.734
+isso ajuda a justificar a quantidade escalante de patentes muito elementares que eles mantêm.
+
+22
+00:01:19.734 --> 00:01:23.870
+Eles gostam da imagem de que pesquisadores de mídia são os melhores dentre os melhores,
+
+23
+00:01:23.870 --> 00:01:27.738
+tão mais inteligentes que todo o resto que suas ideias brilhantes não
+
+24
+00:01:27.738 --> 00:01:29.903
+podem sequer ser compreendidas por meros mortais.
+
+25
+00:01:30.625 --> 00:01:33.716
+Isso é besteira.
+
+26
+00:01:35.205 --> 00:01:38.900
+Áudio e vídeo digitais e <i>streaming</i> e compressão 
+
+27
+00:01:38.900 --> 00:01:42.738
+oferecem infindáveis desafios mentais profundos e estimulantes,
+
+28
+00:01:42.738 --> 00:01:44.662
+assim como qualquer outra disciplina.
+
+29
+00:01:44.662 --> 00:01:47.929
+Se eles parecem elitistas é porque tão pouca gente se envolveu com isso.
+
+30
+00:01:47.929 --> 00:01:51.223
+Mas talvez tão pouca gente se envolveu porque tão pouca gente
+
+31
+00:01:51.223 --> 00:01:54.665
+podia bancar o tipo de equipamento especializado e caro requerido.
+
+32
+00:01:54.665 --> 00:01:58.792
+Mas hoje praticamente qualquer pessoa que está vendo este vídeo possui um computador
+
+33
+00:01:58.792 --> 00:02:03.317
+de uso geral e barato, com poder de processamento suficiente para brincar como gente grande.
+
+34
+00:02:05.926 --> 00:02:11.108
+Existem batalhas sendo travadas hoje acerca do padrão HTML5 e <i>browsers</i>
+
+35
+00:02:11.108 --> 00:02:13.671
+e vídeo e aberto versus fechado.
+
+36
+00:02:13.671 --> 00:02:17.048
+Por isso agora é um momento bastante bom para se envolver.
+
+37
+00:02:17.048 --> 00:02:20.000
+Provavelmente o lugar mais fácil de começar é entender
+
+38
+00:02:20.000 --> 00:02:22.619
+a tecnologia que nós temos neste exato momento.
+
+39
+00:02:23.500 --> 00:02:25.071
+Essa é uma introdução.
+
+40
+00:02:25.071 --> 00:02:28.180
+Por ser uma introdução, vamos passar batido por uma série de detalhes
+
+41
+00:02:28.180 --> 00:02:30.882
+de tal maneira que o panorama geral fique um pouco mais visível.
+
+42
+00:02:30.882 --> 00:02:33.908
+Vários espectadores estarão muito à frente dos assuntos
+
+43
+00:02:33.908 --> 00:02:36.378
+que eu estarei falando, pelo menos por enquanto.
+
+44
+00:02:36.378 --> 00:02:39.293
+Por outro lado, eu provavelmente irei muito rápido para aqueles que são realmente
+
+45
+00:02:39.293 --> 00:02:44.558
+principiantes em tudo isso, mas se tudo o que eu falar for realmente novidade, relaxe.
+
+46
+00:02:44.558 --> 00:02:48.629
+O importante é selecionar ideias que se agarrem à sua imaginação.
+
+47
+00:02:48.629 --> 00:02:52.497
+Preste atenção especialmente à terminologia em volta destas ideias,
+
+48
+00:02:52.479 --> 00:02:56.078
+porque com estes termos, e com o Google e a Wikipedia, você poderá mergulhar
+
+49
+00:02:56.078 --> 00:02:57.753
+tão fundo quanto for o seu interesse.
+
+50
+00:02:57.753 --> 00:03:00.094
+Assim sendo, e sem mais delongas,
+
+51
+00:03:00.094 --> 00:03:03.351
+bem-vindos a um baita de um novo <i>hobby</i>.
+
+

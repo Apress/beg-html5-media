@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 10</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 10</h1>
+    <p>Different filter types applied to an audio source.<p>
+    <audio autoplay controls src="audio/Shivervein_Razorpalm.wav"></audio>
+    <select class="type">
+      <option>lowpass</option>
+      <option>highpass</option>
+      <option>bandpass</option>
+      <option>lowshelf</option>
+      <option>highshelf</option>
+      <option>peaking</option>
+      <option>notch</option>
+      <option>allpass</option>
+    </select>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+    var bass = audioCtx.createBiquadFilter();
+
+    // Set up the biquad filter node with a low-pass filter type
+    bass.type = "lowpass";
+    bass.frequency.value = 6000;
+    bass.Q.value = 1;
+    bass.gain.value = 10;
+
+    mediaElement.addEventListener('play', function() {
+      // create filter graph
+      source.connect(bass);
+      bass.connect(audioCtx.destination);
+    });
+
+    // Update the biquad filter type
+    var type = document.getElementsByClassName('type')[0];
+    type.addEventListener('change', function() {
+      bass.type = type.value;
+    });
+    </script>
+  </body>
+</html>

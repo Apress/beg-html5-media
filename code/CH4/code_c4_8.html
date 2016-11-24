@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 8</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <script src="http://jwpsrv.com/library/jF9CAoUHEeK4QyIACp8kUw.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 8</h1>
+
+      <p><a href="http://support.jwplayer.com/customer/portal/articles/1407438-adding-closed-captions">JWPlayer with captions:</a></p>
+      <div id='jw_captions'></div>
+      <script type='text/javascript'>
+         jwplayer('jw_captions').setup({
+             file: 'video/ElephantDreams.mp4',
+             file: 'video/ElephantDreams.webm',
+             image: 'img/ElephantDreams.png',
+             title: 'JW Player with Captions',
+             width: '50%',
+             aspectratio: '16:9',
+             tracks: [{
+               file: "tracks/ElephantDreams_en.vtt", 
+               label: "English",
+               kind: "captions",
+               "default": true 
+             },{ 
+               file: "tracks/ElephantDreams_jp.vtt", 
+               kind: "captions",
+               label: "Japanese"
+             },{
+               file: "tracks/ElephantDreams_jp.vtt", 
+               kind: "captions",
+               label: "Chinese"             
+             }]
+         });
+      </script> 
+
+      <p><a href="http://support.jwplayer.com/customer/portal/articles/1407454-adding-chapter-markers">JWPlayer with chapters:</a></p>
+      <div id='jw_chapters'></div>
+      <script type='text/javascript'>
+         jwplayer('jw_chapters').setup({
+             file: 'video/ElephantDreams.mp4',
+             file: 'video/ElephantDreams.webm',
+             image: 'img/ElephantDreams.png',
+             title: 'JW Player with Chapters',
+             aspectratio: '16:9',
+             width: '50%',
+             tracks: [{
+               file: "tracks/ElephantDreams_chapters_en.vtt", 
+               label: "English",
+               kind: "chapters",
+               "default": true 
+             }]
+         });
+      </script>
+
+      <p><a href="http://support.jwplayer.com/customer/portal/articles/1407438-adding-closed-captions">JWPlayer with thumbnails:</a></p>
+      <div id='jw_thumbnails'></div>
+      <script type='text/javascript'>
+         jwplayer('jw_thumbnails').setup({
+             file: 'video/Monty.mp4',
+             file: 'video/Monty.webm',
+             image: 'img/Monty.jpg',
+             title: 'JW Player with Thumbnails',
+             width: '50%',
+             aspectratio: '16:9',
+             tracks: [{
+               file: "tracks/Monty_thumbs.vtt", 
+               label: "English",
+               kind: "thumbnails",
+               "default": true 
+             }]
+         });
+      </script>
+    </div>
+  </body>
+</html>

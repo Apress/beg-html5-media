@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 10</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 10</h1>
+
+        <video controls width="400" autoplay>
+            <source src="video/Waterfall.mp4" type="video/mp4"/>
+            <source src="video/Waterfall.webm" type="video/webm"/>
+        </video>
+        
+        <p>Ended on load: <span id="ended_first"></span>.</p>
+        <p>Ended after ended: <span id="ended_ended"></span>.</p>
+    </div>
+
+    <script type="text/javascript">
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("ended_first");
+        var span2 = document.getElementById("ended_ended");
+
+        span1.innerHTML = video.ended;
+        function span2Update(evt) { span2.innerHTML = video.ended; }
+
+        video.addEventListener("ended", span2Update, false);
+    </script>
+
+</body>
+</html>

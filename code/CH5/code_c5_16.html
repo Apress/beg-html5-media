@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 16</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 16</h1>
+
+      <p>
+        <video controls autoplay height="240" width="360" >
+          <source src="video/HelloWorld.mp4"  type="video/mp4">
+          <source src="video/HelloWorld.webm" type="video/webm">
+        </video>
+      </p>
+      <p>
+        <canvas width="1000" height="600" style="border: 1px solid black;">
+        </canvas>
+      </p>
+    </div>
+
+    <script>
+      var context, canvas, video;
+      var i = 0;
+      video = document.getElementsByTagName("video")[0];
+      canvas = document.getElementsByTagName("canvas")[0];
+      context = canvas.getContext("2d");
+      // provide a shadow
+      context.shadowOffsetX = 5;
+      context.shadowOffsetY = 5;
+      context.shadowBlur = 4;
+      context.shadowColor = "rgba(0, 0, 0, 0.5)";
+      video.addEventListener("play", paintFrame, false);
+
+      function paintFrame() {
+        context.drawImage(video, 0, 0, 120, 80);
+        context.setTransform(1, 0,
+                             0, 1,
+                             0, 0);
+        i += 1;
+        context.translate(3 * i , 1.5 * i);
+        context.rotate(0.2 * i);
+        if (video.paused || video.ended) {
+          alert(i);
+          return;
+        }
+        requestAnimationFrame(paintFrame);
+      }
+    </script>
+  </body>
+</html>

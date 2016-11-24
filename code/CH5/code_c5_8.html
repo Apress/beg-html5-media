@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 8</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 8</h1>
+
+      <p>
+        <video controls autoplay height="240" width="360">
+          <source src="video/HelloWorld.mp4"  type="video/mp4">
+          <source src="video/HelloWorld.webm" type="video/webm">
+        </video>
+      </p>
+      <p>
+        <canvas width="720" height="480" style="border: 1px solid black; background-image: url(img/HK.jpg);">
+        </canvas>
+      </p>
+    </div>
+
+    <script>
+      var context, canvas, video;
+      video = document.getElementsByTagName("video")[0];
+      canvas = document.getElementsByTagName("canvas")[0];
+      context = canvas.getContext("2d");
+      video.addEventListener("play", paintFrame, false);
+      function paintFrame() {
+        w = 360; h = 240;
+        context.drawImage(video, 0, 0, w, h);
+        frame = context.getImageData(0, 0, w, h);
+        context.clearRect(0, 0, w, h);
+
+        // Opera doesn't implement createImageData, so use getImageData method
+        output = false;
+        if (context.createImageData) {
+          output = context.createImageData(w, h);
+        } else if (context.getImageData) {
+          output = context.getImageData(0, 0, w, h);
+        }
+
+        // Loop over each pixel of output file
+        for (x = 0; x < w; x++) {
+          for (y = 0; y < h; y++) {
+            // index in output image
+            i = x + w*y;
+            for (c = 0; c < 4; c++) {
+              output.data[4*i+c] = frame.data[4*i+c];
+            }
+            // make pixels transparent
+            r = frame.data[i * 4 + 0];
+            g = frame.data[i * 4 + 1];
+            b = frame.data[i * 4 + 2];
+            if (!(r > 180 && g > 180 && b > 180))
+              output.data[4*i + 3] = 0;
+          }
+        }
+
+        // Draw the ImageData object.
+        context.putImageData(output, 0, 0);
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(paintFrame);
+      }
+    </script>
+  </body>
+</html>

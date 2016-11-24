@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 2</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 2</h1>
+
+		<video controls autoplay width="400">
+			<source src="video/HK_Traffic.mp4" type="video/mp4"/>
+			<source src="video/HK_Traffic.webm" type="video/webm"/>
+		</video>
+
+		<p>currentSrc on load: <span id="first"></span>.</p>
+		<p>currentSrc after progress: <span id="progress"></span>.</p>
+		<p>currentSrc after loadedmetadata: <span id="loadedmetadata"></span>.</p>
+	</div>
+
+	<script type="text/javascript">
+	var video = document.getElementsByTagName("video")[0];
+	var span1 = document.getElementById("first");
+	var span2 = document.getElementById("progress");
+	var span3 = document.getElementById("loadedmetadata");
+
+	span1.innerHTML = video.currentSrc;
+
+	function span2Update(evt) {
+		span2.innerHTML = video.currentSrc;
+	}
+
+	function span3Update(evt) {
+		span3.innerHTML = video.currentSrc;
+	}
+
+	video.addEventListener("progress", span2Update, false);
+	video.addEventListener("loadedmetadata", span3Update, false);
+	</script>
+</body>
+</html>

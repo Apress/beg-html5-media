@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 19</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 19</h1>
+    <p>Setting the pos of a listener on an AudioContext relative to a fixed sound source.<p>
+    <p>Position:
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="pos0"/>
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="pos1"/>
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="pos2"/>
+    </p>
+    <p>Orientation:
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="ori0"/>
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="ori1"/>
+      <input type="range"  min="-1" max="1" step="0.1" value="-1" name="ori2"/>
+    </p>
+    <p>Elevation:
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="ele0"/>
+      <input type="range"  min="-1" max="1" step="0.1" value="1" name="ele1"/>
+      <input type="range"  min="-1" max="1" step="0.1" value="0" name="ele2"/>
+    </p>
+    <button>STOP</button>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var source = audioCtx.createBufferSource();
+    var panner = audioCtx.createPanner();
+    panner.coneOuterGain = 0.5;
+    panner.coneOuterAngle = 180;
+    panner.coneInnerAngle = 90;
+
+
+    var request = new XMLHttpRequest();
+    var url = 'audio/ticking.wav';
+
+    function requestData(url) {
+      request.open('GET', url, true);
+      request.responseType = 'arraybuffer';
+      request.send();
+    }
+
+    function receivedData() {
+      if ((request.status === 200 || request.status === 206) 
+          && request.readyState === 4) {
+        var audioData = request.response;
+        audioCtx.decodeAudioData(audioData,
+          function(buffer) {
+            source.buffer = buffer;
+            source.connect(panner);
+            panner.connect(audioCtx.destination);
+            source.loop = true;
+            source.start(0);
+          },
+          function(error) {
+            "Error with decoding audio data" + error.err
+          }
+        );
+      }
+    }
+
+    request.addEventListener('load', receivedData, false);
+    requestData(url);
+
+    var stop = document.getElementsByTagName('button')[0];
+    stop.addEventListener('click', function() {
+        panner.disconnect(audioCtx.destination);
+    });
+
+
+    // set up event listeners for all input elements
+    var inputs = document.getElementsByTagName('input');
+    var pos = [0, 0, 0];
+    var ori = [0, 0, -1];
+    var ele = [0, 1, 0];
+
+    for (i=0; i < inputs.length; i++) {
+      var elem = inputs[i];
+      elem.addEventListener('change', function() {
+        var type = this.name.substr(0,3);
+        var index = this.name.slice(3);
+        var value = parseFloat(this.value);
+
+        switch (type) {
+          case 'pos':
+            pos[index] = value;
+            audioCtx.listener.setPosition(pos[0], pos[1], pos[2]);
+            break;
+          case 'ori':
+            ori[index] = value;
+            audioCtx.listener.setOrientation(ori[0], ori[1], ori[2],
+                                             ele[0], ele[1], ele[2]);
+            break;
+          case 'ele':
+            ele[index] = value;
+            audioCtx.listener.setOrientation(ori[0], ori[1], ori[2],
+                                             ele[0], ele[1], ele[2]);
+            break;
+          default:
+            console.log('no match');
+        }
+        console.log(value);
+      });
+    }
+    </script>
+  </body>
+</html>

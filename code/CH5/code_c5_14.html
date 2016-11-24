@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 14</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 14</h1>
+
+      <canvas id="canvas" width="360" height="240"></canvas>
+      <video autoplay style="display: none;">
+        <source src="video/HelloWorld.mp4"  type="video/mp4">
+        <source src="video/HelloWorld.webm" type="video/webm">
+      </video>
+    </div>
+
+    <script>
+      var canvas, context, video;
+      video = document.getElementsByTagName("video")[0];
+      canvas = document.getElementsByTagName("canvas")[0];
+      context = canvas.getContext("2d");
+      // paint text onto canvas as mask
+      context.font = 'bold 70px sans-serif';
+      context.textBaseline = 'top';
+      context.fillText('Hello World!', 0, 0, 320);
+      context.globalCompositeOperation = "source-in";
+      video.addEventListener("play", paintFrame, false);
+
+      function paintFrame() {
+        context.drawImage(video, 0, 0, 360, 240);
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(paintFrame);
+      }
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 20</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 20</h1>
+
+      <video poster="img/ElephantDreams.png" controls width="50%">
+        <source src="video/ElephantDreams.webm" type="video/webm">
+        <source src="video/ElephantDreams.mp4"  type="video/mp4">
+      </video>
+      <h3>Attribute values:</h3>
+      <p id="values"></p>
+    </div>
+
+    <script>
+      var values = document.getElementById('values');
+      var video = document.getElementsByTagName("video")[0];
+      video.volume = 0.1;
+      var audio = new Audio();
+      if (audio.canPlayType('audio/mp3') == "maybe" ||
+          audio.canPlayType('audio/mp3') == "probably") {
+        audio.src = "video/ElephantDreams.audesc.mp3";
+      } else {
+        audio.src = "video/ElephantDreams.audesc.ogg";        
+      }
+      audio.volume = 1.0;
+
+      if (typeof MediaController !== "undefined") {
+        var controller = new MediaController();
+        video.controller = controller;
+        audio.controller = controller;
+        controller.play();
+
+        controller.addEventListener("timeupdate", function() {
+          if (controller.currentTime > 40) {
+            values.innerHTML += "MediaController: volume=" + controller.volume + "<br/>";
+            values.innerHTML += "Audio: volume=" + audio.volume + "<br/>";
+            values.innerHTML += "Video: volume=" + video.volume + "<br/>";
+            values.innerHTML += "MediaController: currentTime=" + controller.currentTime + "<br/>";
+            values.innerHTML += "Audio: currentTime=" + audio.currentTime + "<br/>";
+            values.innerHTML += "Video: currentTime=" + video.currentTime;
+            controller.pause();
+          }
+        }, false);
+      } else {
+        values.innerHTML += "Browser does not support MediaController";
+      }
+    </script>
+  </body>
+</html>

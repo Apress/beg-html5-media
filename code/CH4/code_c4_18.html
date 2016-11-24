@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 18</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 18</h1>
+
+      <video poster="img/ElephantDreams.png" controls width="50%" autoplay>
+        <source src="video/ElephantDreams.mux.webm" type="video/webm">
+        <source src="video/ElephantDreams.mux.mp4"  type="video/mp4">
+      </video>
+      <h3>Attribute values:</h3>
+      <p id="values"></p>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName("video")[0];
+      var values = document.getElementById('values');
+
+      function start() {
+        if (video.videoTracks) {
+          values.innerHTML += "videoTracks.length: " +
+                              video.videoTracks.length + "<br/>";
+          values.innerHTML += "audioTracks.length: " +
+                              video.audioTracks.length;
+        } else {
+          values.innerHTML += "Browser does not support multitrack audio and video.";
+        }
+        setTimeout(function(){video.pause();}, 5000);
+      }
+      video.addEventListener("loadedmetadata", start, false);
+    </script>
+  </body>
+</html>

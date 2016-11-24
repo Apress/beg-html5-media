@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 11</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 11</h1>
+
+      <video poster="img/Monty.jpg" controls width="50%">
+        <source src="video/Monty.mp4"  type="video/mp4">
+        <source src="video/Monty.webm" type="video/webm">
+      
+        <track id="track1" label="English" src="tracks/Monty_subs_en.vtt" kind="subtitles" srclang="en" default>
+      </video>
+      <h3>TextTrack object:</h3>
+      <p id="values"><b>Before loading:</b><br/></p>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName('video')[0];
+      var track = document.getElementsByTagName('track')[0];
+      var values = document.getElementById('values');
+      values.innerHTML += JSON.stringify(track.track, undefined, 4) + "<br/>";
+      values.innerHTML += "track.cues length: " + track.track.cues.length + "<br/>";
+
+      function loaded() {
+          values.innerHTML += "<b>After loading:</b><br/>";
+          values.innerHTML += "track.cues[0]: " + track.track.cues[0] + "<br/>";
+          values.innerHTML += "track.cues length: " + track.track.cues.length;
+      }
+      video.addEventListener("loadeddata", loaded, false);
+    </script>
+</html>

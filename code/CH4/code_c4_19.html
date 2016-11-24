@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 19</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 19</h1>
+
+      <video poster="img/ElephantDreams.png" controls width="50%" mediagroup="sync">
+        <source src="video/ElephantDreams.webm" type="video/webm">
+        <source src="video/ElephantDreams.mp4"  type="video/mp4">
+      </video>
+      <video poster="img/ElephantDreams.sasl.png" width="35%" mediagroup="sync">
+        <source src="video/ElephantDreams.sasl.webm" type="video/webm">
+        <source src="video/ElephantDreams.sasl.mp4"  type="video/mp4">
+      </video>
+      <h3>Attribute values:</h3>
+      <p id="values"></p>
+    </div>
+
+    <script>
+      var video1 = document.getElementsByTagName("video")[0];
+      var video2 = document.getElementsByTagName("video")[1];
+      var values = document.getElementById('values');
+
+      function start() {
+        setTimeout(function() {
+          video1.controller.pause();
+          values.innerHTML += "Video1: duration=" + video1.duration + "<br/>";
+          values.innerHTML += "Video2: duration=" + video2.duration + "<br/>";
+          values.innerHTML += "MediaGroup: " + video1.mediaGroup + "<br/>";
+          values.innerHTML += "MediaController: duration=" + video1.controller.duration + "<br/>";
+          values.innerHTML += "MediaController: paused=" + video1.controller.muted + "<br/>";
+          values.innerHTML += "MediaController: currentTime=" + video1.controller.currentTime;
+        }, 8000);
+      }
+      video1.addEventListener("play", start, false);
+
+      function play() {
+        if (video1.controller) {
+          video1.controller.play();
+        } else {
+          values.innerHTML += "Browser does not support MediaController."
+        }
+      }
+      video1.addEventListener("loadeddata", play, false);
+    </script>
+  </body>
+</html>

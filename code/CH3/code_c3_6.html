@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 6</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 6</h1>
+
+        <video controls width="400">        
+            <source src="video/HK_Traffic.mp4" type="video/mp4"/>
+            <source src="video/HK_Traffic.webm" type="video/webm"/>
+        </video>
+        
+        <p>Dimensions on load: <span id="dimensions_first"></span>.</p>
+        <p>Dimensions after loadedmetadata: <span id="dimensions_loadedmetadata"></span>.</p>
+    </div>
+
+    <script type="text/javascript">
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("dimensions_first");
+        var span2 = document.getElementById("dimensions_loadedmetadata");
+
+        span1.innerHTML = video.videoWidth + "x" + video.videoHeight + " / "
+                            +  video.width + "x" + video.height;
+        function span2Update(evt) {
+            span2.innerHTML = video.videoWidth + "x" + video.videoHeight + " / "
+                                +  video.width + "x" + video.height;
+        }
+
+        video.addEventListener("loadedmetadata", span2Update, false);
+    </script>
+
+</body>
+</html>

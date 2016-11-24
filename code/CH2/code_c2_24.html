@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 2: example 24</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+<body>
+<div class="container"> 
+
+  <h1>Beginning HTML5 media</h1>
+  <h2>The basic code:</h2>
+  <p>Here is an example that shows which video MIME types a browser supports:</p>
+  
+  <ul>
+    <script type="text/javascript">
+      var types = new Array();
+      types[0] = "video/ogg";
+      types[1] = 'video/ogg; codecs="theora, vorbis"';
+      types[2] = "video/webm";
+      types[3] = 'video/webm; codecs="vp8, vorbis"';
+      types[4] = "video/webm";
+      types[5] = 'video/webm; codecs="vp9, opus"';
+      types[6] = "video/mp4";
+      types[7] = 'video/mp4; codecs="avc1.42E01E, mp3"';
+      types[8] = "video/mp4";
+      types[9] = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+      // create a video element
+      var video = document.createElement('video');
+      // test types
+      for (i=0; i<types.length; i++) {
+        var support = video.canPlayType(types[i]);
+        if (support == "") support="no";
+        document.write("<li><b>"+types[i]+"</b> : "+support+"</li>");
+      }
+    </script>
+  </ul>
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 21</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 21</h1>
+
+      <video poster="img/ElephantDreams.png" controls width="50%">
+        <source src="video/ElephantDreams.webm" type="video/webm">
+        <source src="video/ElephantDreams.mp4"  type="video/mp4">
+        <track src="tracks/ElephantDreams_chapters_en.vtt" srclang="en" kind="chapters" default>
+      </video>
+      <h3>Navigate through the following chapters:</h3>
+      <ul id="chapters">
+      </ul>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName("video")[0];
+      var source;
+      var chapters = document.getElementById('chapters');
+
+      function showChapters() {
+        source = video.currentSrc;
+        console.log(source);
+        var cues = video.textTracks[0].cues;
+        for (var i=0; i<cues.length; i++) {
+          var li = document.createElement("li");
+          var link = document.createElement("a");
+          link.href = "#t=" + cues[i].startTime + "," + cues[i].endTime;
+          var cue = cues[i].getCueAsHTML();
+          cue.textContent = parseInt(cues[i].startTime) + " sec : " + cue.textContent;
+          link.appendChild(cue);
+          li.appendChild(link);
+          chapters.appendChild(li);
+        }
+        video.removeEventListener("loadeddata", showChapters, false);
+      }
+      video.addEventListener("loadeddata", showChapters, false);
+
+      function updateFragment() {
+        video.src = source + window.location.hash;
+        video.load();
+        video.play();
+      }
+      window.addEventListener("hashchange", updateFragment, false);
+    </script>
+  </body>
+</html>

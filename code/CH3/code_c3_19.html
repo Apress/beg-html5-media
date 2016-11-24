@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 19</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <script src="http://jwpsrv.com/library/jF9CAoUHEeK4QyIACp8kUw.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 19</h1>
+        <h3>Use the JW Player to stream video into a web page </h3>
+        <p>Here is the result :</p>
+
+        <div id='playerXYalbMUtktfx'></div>
+        <script type='text/javascript'>
+            jwplayer('playerXYalbMUtktfx').setup({
+                file: 'video/Vultures.mp4',
+                file: 'video/Vultures.webm',
+                image: 'img/BabyVulture.jpg',
+                title: 'Baby Turkey Vultures',
+                width: '100%',
+                aspectratio: '16:9'
+            });
+        </script>
+    </div>
+  </body>
+</html>

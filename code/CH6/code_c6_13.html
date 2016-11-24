@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 11</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 11</h1>
+    <p>Waveshaper distortion on an audio file. Left is the distorted one, right the original.<p>
+    <audio autoplay controls src="audio/Shivervein_Razorpalm.wav"></audio>
+    <audio controls src="audio/Shivervein_Razorpalm.wav"></audio>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+
+    function makeDistortionCurve() {
+      var n_samples = audioCtx.sampleRate;
+      var curve = new Float32Array(n_samples);
+      var x;
+      for (var i=0; i < n_samples; ++i ) {
+        x = i * 2 / n_samples - 1;
+        curve[i] = 0.5 * Math.pow(x, 3);
+      }
+      return curve;
+    };
+
+    var distortion = audioCtx.createWaveShaper();
+    distortion.curve = makeDistortionCurve();
+    distortion.oversample = '4x';
+
+    mediaElement.addEventListener('play', function() {
+      // create filter graph
+      source.connect(distortion);
+      distortion.connect(audioCtx.destination);
+    });
+    </script>
+  </body>
+</html>

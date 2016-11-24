@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 14</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 14</h1>
+
+      <video poster="img/Monty.jpg" controls width="50%">
+        <source src="video/Monty.mp4"  type="video/mp4">
+        <source src="video/Monty.webm" type="video/webm">
+      
+        <track id="track1" label="English" src="tracks/Monty_subs_en.vtt" kind="subtitles" srclang="en" default>
+      </video>
+      <h3>TextTrack object:</h3>
+      <p id="values"></p>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName('video')[0];
+      var values = document.getElementById('values');
+      var new_track = video.addTextTrack("chapters", "English Chapters", "en");
+
+      var cue;
+      if (typeof VTTCue != "undefined") {
+          cue = new VTTCue(0.00, 7.298, "Opening Credits");
+      } else { // for Safari 7
+          cue = new TextTrackCue(0.00, 7.298, "Opening Credits");
+      }
+      new_track.addCue(cue);
+
+      if (typeof VTTCue != "undefined") {
+          cue = new VTTCue(7.298, 204.142, "Introduction");
+      } else { // for Safari 7
+          cue = new TextTrackCue(7.298, 204.142, "Introduction");
+      }    
+      new_track.addCue(cue);
+
+      function loaded() {
+          values.innerHTML += "Number of text tracks: " + video.textTracks.length + "</br>";
+          for (var i=0; i < video.textTracks.length; i++) {
+              values.innerHTML += "<b>Track[" + i + "]:</b></br>";
+              values.innerHTML += "Number of cues: " + video.textTracks[i].cues.length + "<br/>";
+              values.innerHTML += "First cue: " + video.textTracks[i].cues[0].text + "<br/>";
+          }
+      }
+      video.addEventListener("loadedmetadata", loaded, false);
+    </script>
+</html>

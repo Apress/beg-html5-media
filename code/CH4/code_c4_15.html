@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 15</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style>
+      video::cue {color: lime;}
+      video::cue(#\31\ first\ cue) {background-color: blue;}
+      video::cue(v[voice="Tay Zonday"]) {color: red !important;}
+      video::cue(:past) {color: lime;}
+      video::cue(:future) {color: gray;}
+      video::cue(c.brown) {color:brown; background-color: white;}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 15</h1>
+
+      <video poster="img/chocolate_rain.png" controls>
+        <source src="video/chocolate_rain.mp4"  type="video/mp4">
+        <source src="video/chocolate_rain.webm" type="video/webm">
+      
+        <track id="track1" label="English" src="tracks/chocolate_rain.vtt" kind="subtitles" srclang="en" default>
+      </video>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName("video")[0];
+
+      function loaded() {
+          video.currentTime = 9.8;
+          video.play();
+      }
+      function update() {
+          if (video.currentTime > 19) {
+              video.pause();
+          }
+      }
+      video.addEventListener("loadedmetadata", loaded, false);
+      video.addEventListener("timeupdate", update, false);
+    </script>
+</html>

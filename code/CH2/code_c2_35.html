@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 2: example 35</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+    @-webkit-keyframes moveIt {
+      0% {-webkit-transform: translateX(0);}
+      100% {-webkit-transform: translateX(600px);}
+    }
+    @keyframes moveIt {
+      0% {transform: translateX(0);}
+      100% {transform: translateX(600px);}
+    }
+    video{
+        width: 200px;
+        animation-name: moveIt;
+        -webkit-animation-name: moveIt;
+        animation-duration: 2s;
+        -webkit-animation-duration: 2s;
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        animation-iteration-count: 4;
+        -webkit-animation-iteration-count: 4;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+        animation-direction: alternate;
+        -webkit-animation-direction: alternate;
+    }
+    </style>
+  </head>
+
+<body>
+<div class="container">
+
+    <h1>Beginning HTML5 media</h1>
+    <h2>The basic code:</h2>
+    <p>Here is an example of an animated video element:</p>
+
+    <video poster="img/BabyVulture.jpg" controls>
+       <source src="video/Vultures.mp4" type='video/mp4'/>
+       <source src="video/Vultures.webm" type='video/webm'/>
+    </video>
+</div>
+</body>
+</html>

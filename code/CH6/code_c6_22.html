@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 22</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 22</h1>
+    <p>Rendering waveform data of an AudioContext.<p>
+
+    <audio autoplay controls loop src="audio/ticking.wav"></audio>
+    <canvas width="512" height="200"></canvas>
+
+    <script>
+    // prepare canvas for rendering
+    var canvas = document.getElementsByTagName("canvas")[0];
+    var sctxt = canvas.getContext("2d");
+    sctxt.fillRect(0, 0, 512, 200);
+    sctxt.strokeStyle = "#FFFFFF";
+    sctxt.lineWidth = 2;
+
+    // prepare audio data
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+
+    // prepare filter graph
+    var analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 2048;
+    analyser.smoothingTimeConstant = 0.1;
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+
+    // data from the analyser node
+    var buffer = new Uint8Array(analyser.frequencyBinCount);
+
+    function draw() {
+      analyser.getByteTimeDomainData(buffer);
+
+      // do the canvas painting
+      var width = canvas.width;
+      var height = canvas.height;
+      var step = parseInt(buffer.length / width);
+      sctxt.fillRect(0, 0, width, height);
+      sctxt.drawImage(canvas, 0, 0, width, height);
+      sctxt.beginPath();
+      sctxt.moveTo(0, buffer[0] * height / 256);
+      for(var i=1; i< width; i++) {
+        sctxt.lineTo(i, buffer[i*step] * height / 256);
+      }
+      sctxt.stroke();
+      window.requestAnimationFrame(draw);
+    }
+    mediaElement.addEventListener('play', draw , false);
+    </script>
+  </body>
+</html>

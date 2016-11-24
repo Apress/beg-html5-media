@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 14</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 14</h1>
+    <p>Apply different gains to right and left channels of an audio file.<p>
+    <audio autoplay controls src="audio/Shivervein_Razorpalm.wav"></audio>
+    <p>Left Channel Gain:
+      <input type="range"  min="0" max="1" step="0.1" value="1"/>
+    </p>
+    <p>Right Channel Gain:
+      <input type="range"  min="0" max="1" step="0.1" value="1"/>
+    </p>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+
+    var source = audioCtx.createMediaElementSource(mediaElement);
+    var splitter = audioCtx.createChannelSplitter(2);
+    var merger = audioCtx.createChannelMerger(2);
+    var gainLeft = audioCtx.createGain();
+    var gainRight = audioCtx.createGain();
+
+    // filter graph
+    source.connect(splitter);
+    splitter.connect(gainLeft, 0);
+    splitter.connect(gainRight, 0);
+    gainLeft.connect(merger, 0, 0);
+    gainRight.connect(merger, 0, 1);
+    merger.connect(audioCtx.destination);
+
+    var sliderLeft = document.getElementsByTagName('input')[0];
+    sliderLeft.addEventListener('change', function() {
+      gainLeft.gain.value = sliderLeft.value;
+    });
+    var sliderRight = document.getElementsByTagName('input')[1];
+    sliderRight.addEventListener('change', function() {
+      gainRight.gain.value = sliderRight.value;
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 6</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 6</h1>
+    <p>Fetching an audio element into an AudioContext.<p>
+    <audio controls src="audio/transition.wav"></audio>
+    <button>STOP</button>
+    
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+    
+    mediaElement.addEventListener('play', function() {
+        source.connect(audioCtx.destination);
+    });
+
+    var stop = document.getElementsByTagName('button')[0];
+    stop.addEventListener('click', function() {
+        source.disconnect(audioCtx.destination);
+    });
+    </script>
+  </body>
+</html>

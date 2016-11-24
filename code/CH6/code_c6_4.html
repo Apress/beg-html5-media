@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 4</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 4</h1>
+    <p>Gain changes on oscillator.<p>
+    <button>STOP</button>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    var oscillator = audioCtx.createOscillator();
+
+    // second oscillator that will be used as an LFO
+    var lfo = audioCtx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 2.0; // 2Hz: low-frequency oscillation (LFO)
+
+    // create a gain whose gain AudioParam will be controlled by the LFO
+    var gain = audioCtx.createGain();
+    lfo.connect(gain.gain);
+
+    // set up the filter graph and start the nodes
+    oscillator.connect(gain);
+    gain.connect(audioCtx.destination);
+    oscillator.start(0);
+    lfo.start(0);
+
+    var stop = document.getElementsByTagName('button')[0];
+    stop.addEventListener('click', function() {
+        gain.disconnect(audioCtx.destination);
+    });
+    </script>
+  </body>
+</html>

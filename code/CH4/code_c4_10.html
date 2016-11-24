@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 10</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 10</h1>
+
+      <video poster="img/Monty.jpg" controls width="50%" autoplay>
+        <source src="video/Monty.mp4"  type="video/mp4">
+        <source src="video/Monty.webm" type="video/webm">
+      
+        <track label="Australian" src="tracks/Monty_subs_au.vtt" kind="subtitles" srclang="en-au" default>
+        <track label="English" src="tracks/Monty_subs_en.vtt" kind="subtitles" srclang="en">
+      </video>
+      <h3>Events:</h3>
+      <p id="values"></p>
+    </div>
+
+    <script>
+        var video = document.getElementsByTagName('video')[0];
+        var tracks = document.getElementsByTagName('track');
+        var values = document.getElementById('values');
+        
+        function trackloaded(evt) {
+            values.innerHTML += "Track loaded: " + evt.target.label + " track<br/>";
+        }
+        function trackerror(evt) {
+            values.innerHTML += "Track error: " + evt.target.label + " track<br/>";
+            tracks[1].track.mode = "showing";
+        }
+        function cuechange(evt) {
+            values.innerHTML += "Cue change: " + evt.target.label + " track<br/>";
+            video.pause();      
+        }
+        for (var i=0; i < tracks.length; i++) {
+            tracks[i].onload = trackloaded;
+            tracks[i].onerror = trackerror;
+            tracks[i].oncuechange = cuechange;
+        }
+    </script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 2: example 32</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+    video{
+        width: 400px;
+    	height: 225px;
+    }
+    #gradient{
+        position: relative;
+        width: 400px;
+        height: 225px;
+    	top: -225px;
+        background: -webkit-linear-gradient(rgba(255,255,255,0), white);
+        background: -moz-linear-gradient(rgba(255,255,255,0), white);
+        background: -o-linear-gradient(rgba(255,255,255,0), white);
+        background: linear-gradient(rgba(255,255,255,0), white);
+        pointer-events: none;
+    }
+    </style>
+  </head>
+
+<body>
+<div class="container">
+
+    <h1>Beginning HTML5 media</h1>
+    <h2>The basic code:</h2>
+    <p>Here is an example of a Video element with a gradient:</p>
+    
+    <video poster="img/BabyVulture.jpg" controls>
+       <source src="video/Vultures.mp4" type='video/mp4'/>
+       <source src="video/Vultures.webm" type='video/webm'/>
+    </video>
+    <div id="gradient"></div>
+</div>
+    
+  
+</body>
+</html>

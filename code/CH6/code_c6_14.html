@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 14</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 14</h1>
+    <p>Stereo pan change on an audio file.<p>
+    <audio autoplay controls src="audio/Shivervein_Razorpalm.wav"></audio>
+    <input type="range"  min="-1" max="1" step="0.05" value="0"/>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+
+    var source = audioCtx.createMediaElementSource(mediaElement);
+    var panNode = audioCtx.createStereoPanner();
+    source.connect(panNode);
+    panNode.connect(audioCtx.destination);
+
+    var slider = document.getElementsByTagName('input')[0];
+    slider.addEventListener('change', function() {
+      panNode.pan.value = slider.value;
+    });
+    </script>
+  </body>
+</html>

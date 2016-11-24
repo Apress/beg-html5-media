@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 9</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 9</h1>
+
+      <video poster="img/Monty.jpg" controls width="50%">
+        <source src="video/Monty.mp4"  type="video/mp4">
+        <source src="video/Monty.webm" type="video/webm">
+      
+        <track label="English" src="tracks/Monty_subs_en.vtt" kind="subtitles" srclang="en" default>
+      </video>
+      <h3>Attribute values:</h3>
+      <p id="values"></p>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName('video')[0];
+      var track = document.getElementsByTagName('track')[0];
+      var values = document.getElementById('values');
+      values.innerHTML += "Kind: " + track.kind + "<br/>";
+      values.innerHTML += "Src: " + track.src + "<br/>";
+      values.innerHTML += "Srclang: " + track.srclang + "<br/>";
+      values.innerHTML += "Label: " + track.label + "<br/>";
+      values.innerHTML += "Default: " + track.default + "<br/>";
+      values.innerHTML += "ReadyState: " + track.readyState + "<br/>";
+      values.innerHTML += "Track: " + track.track + "<br/>";
+      
+      function loaded() {
+          values.innerHTML += "ReadyState: " + track.readyState + "<br/>";
+      }
+      video.addEventListener("loadedmetadata", loaded, false);
+    </script>
+</html>

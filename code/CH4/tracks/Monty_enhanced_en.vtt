@@ -1,0 +1,220 @@
+WEBVTT
+
+title-1
+00:00:00.000 --> 00:00:02.050
+<img src="http://people.xiph.org/~giles/2004/openweekend/theora-talk/xifish.png" alt="Xiph Logo"/> <a href="http://www.xiph.org/about/" alt="link to Xiph.org about page">About <i>Xiph.org</i></a>
+
+title-2
+00:00:02.050 --> 00:00:05.450
+<img src="http://www.linuxcertified.com/images/redhat-logo.jpg" alt="RedHat Logo"/> <a href="http://www.redhat.com/" alt="link to Redhat Website">Sponsored by <b>RedHat</b></a>
+
+title-3
+00:00:05.450 --> 00:00:07.450
+<a href="http://www.xiph.org/video/vid1.shtml" alt="link to publication web page for video">Original Publication</a>
+<a href="http://webchat.freenode.net/?channels=xiph" alt="link to freenode irc channel for Xiph">Chat with the creators of the video</a>
+
+1
+00:00:08.124 --> 00:00:10.742
+<img src="http://www.veryicon.com/icon/preview/Hardware/DevCom%20Network/Workstation%20Icon.jpg" alt="image of workstation"/> Workstations and high end personal computers have been able to
+
+2
+00:00:10.742 --> 00:00:14.749
+manipulate <img src="http://www.files32.com/images/audio_editor_plus-15090-thumb.jpeg" alt="image of audio editing suite"/> digital audio pretty easily for about fifteen years now.
+
+3
+00:00:14.749 --> 00:00:17.470
+It's only been about five years that a decent workstation's been able
+
+4
+00:00:17.470 --> 00:00:21.643
+to handle <img src="http://www.digital-digest.com/dvd/downloads/images/honest_video_editor.jpg" alt="image of video editing suite"/> raw video without a lot of expensive special purpose hardware.
+
+5
+00:00:21.643 --> 00:00:25.400
+But today even most cheap home PCs have the processor power and
+
+6
+00:00:25.400 --> 00:00:28.092
+storage necessary to really toss raw video around,
+
+7
+00:00:28.092 --> 00:00:30.479
+at least without too much of a struggle. 
+
+8
+00:00:30.479 --> 00:00:33.579
+So now that everyone has all of this cheap capable hardware, 
+
+9
+00:00:33.579 --> 00:00:36.651
+more people, not surprisingly, want to do interesting
+
+10
+00:00:36.651 --> 00:00:39.908
+things with digital media, especially streaming. 
+
+11
+00:00:39.908 --> 00:00:44.017
+YouTube was the first huge success, and now everybody wants in.
+
+12
+00:00:44.017 --> 00:00:47.413
+Well good!  Because this stuff is a lot of fun!
+
+13
+00:00:48.250 --> 00:00:51.179
+It's no problem finding consumers for digital media.  
+
+14
+00:00:51.179 --> 00:00:54.649
+But here, I'd like to address the engineers, the mathematicians, 
+
+15
+00:00:54.649 --> 00:00:57.869
+the hackers, the people who are interested in discovering 
+
+16
+00:00:57.869 --> 00:01:01.302
+and making things and building the technology itself. 
+
+17
+00:01:01.302 --> 00:01:03.282
+The people after my own heart.
+
+18
+00:01:04.250 --> 00:01:08.723
+Digital media, compression especially, is perceived to be super-elite,
+
+19
+00:01:08.723 --> 00:01:12.822
+somehow incredibly more difficult than anything else in computer science. 
+
+20
+00:01:12.822 --> 00:01:15.700
+The big industry players in the field don't mind this perception at all; 
+
+21
+00:01:15.700 --> 00:01:19.734
+it helps justify the staggering number of very basic patents they hold.  
+
+22
+00:01:19.734 --> 00:01:23.870
+They like the image that their media researchers are the best of the best, 
+
+23
+00:01:23.870 --> 00:01:27.738
+so much smarter than anyone else that their brilliant ideas can't 
+
+24
+00:01:27.738 --> 00:01:29.903
+even be understood by mere mortals. 
+
+25
+00:01:30.625 --> 00:01:33.716
+This is bunk.  
+
+26
+00:01:35.205 --> 00:01:38.900
+Digital audio and video and streaming and compression 
+
+27
+00:01:38.900 --> 00:01:42.738
+offer endless deep and stimulating mental challenges, 
+
+28
+00:01:42.738 --> 00:01:44.662
+just like any other discipline. 
+
+29
+00:01:44.662 --> 00:01:47.929
+It seems elite because so few people have been been involved.  
+
+30
+00:01:47.929 --> 00:01:51.223
+So few people have been involved perhaps because so few people 
+
+31
+00:01:51.223 --> 00:01:54.665
+could afford the expensive, special-purpose equipment it required. 
+
+32
+00:01:54.665 --> 00:01:58.792
+But today, just about anyone watching this video has a cheap, 
+
+33
+00:01:58.792 --> 00:02:03.317
+general-purpose computer powerful enough to play with the big boys. 
+
+34
+00:02:05.926 --> 00:02:11.108
+There are battles going on today around HTML5 and browsers 
+
+35
+00:02:11.108 --> 00:02:13.671
+and video and open vs. closed. 
+
+36
+00:02:13.671 --> 00:02:17.048
+So now is a pretty good time to get involved.  
+
+37
+00:02:17.048 --> 00:02:20.000
+The easiest place to start is probably understanding 
+
+38
+00:02:20.000 --> 00:02:22.619
+the technology we have right now.
+
+39
+00:02:23.500 --> 00:02:25.071
+This is an introduction. 
+
+40
+00:02:25.071 --> 00:02:28.180
+Since it's an introduction, it glosses over a ton of details 
+
+41
+00:02:28.180 --> 00:02:30.882
+so that the big picture's a little easier to see.
+
+42
+00:02:30.882 --> 00:02:33.908
+Quite a few people watching are going to be way past anything 
+
+43
+00:02:33.908 --> 00:02:36.378
+that I'm talking about, at least for now.  
+
+44
+00:02:36.378 --> 00:02:39.293
+On the other hand, I'm probably going to go too fast for folks 
+
+45
+00:02:39.293 --> 00:02:44.558
+who really are are brand new to all of this, so if this is all new, relax. 
+
+46
+00:02:44.558 --> 00:02:48.629
+The important thing is to pick out any ideas  that really grab your imagination.
+
+47
+00:02:48.629 --> 00:02:52.497
+Especially pay attention to the terminology surrounding those ideas, 
+
+48
+00:02:52.479 --> 00:02:56.078
+because with those, and Google, and Wikipedia, you can dig 
+
+49
+00:02:56.078 --> 00:02:57.753
+as deep as interests you.
+
+50
+00:02:57.753 --> 00:03:00.094
+So, without any further ado, 
+
+51
+00:03:00.094 --> 00:03:03.351
+welcome to one hell of a new hobby.
+
+

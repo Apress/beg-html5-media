@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 12</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 12</h1>
+
+        <video controls autoplay width="400">
+            <source src="video/Waterfall.mp4" type="video/mp4"/>
+            <source src="video/Waterfall.webm" type="video/webm"/>
+        </video>
+        
+        <p>NetworkState on start: <span id="networkState_first"></span>.</p>
+        <p>NetworkState after loadedmetadata: <span id="networkState_loadedmetadata"></span>.</p>
+        <p>NetworkState after progress: <span id="networkState_progress"></span>.</p>
+        <p>NetworkState after timeupdate: <span id="networkState_timeupdate"></span>.</p>
+    </div>
+
+    <script type="text/javascript">
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("networkState_first");
+        var span2 = document.getElementById("networkState_loadedmetadata");
+        var span3 = document.getElementById("networkState_progress");
+        var span4 = document.getElementById("networkState_timeupdate");
+
+        span1.innerHTML = video.networkState;
+        function span2Update(evt) {
+            span2.innerHTML = video.networkState;
+        }
+        function span3Update(evt) {
+            span3.innerHTML = video.networkState;
+        }
+        function span4Update(evt) {
+            if (video.currentTime > video.duration/2) {
+                video.src = "notavail.mp4";
+                video.load();
+                span4.innerHTML = video.networkState;
+            }
+        }
+        video.addEventListener("loadedmetadata", span2Update, false);
+        video.addEventListener("progress", span3Update, false);
+        video.addEventListener("timeupdate", span4Update, false);
+    </script>
+
+</body>
+</html>

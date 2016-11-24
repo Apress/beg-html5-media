@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 13</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 13</h1>
+
+      <canvas id="canvas" width="360" height="240"></canvas>
+      <video autoplay style="display: none;">
+        <source src="video/HelloWorld.mp4"  type="video/mp4">
+        <source src="video/HelloWorld.webm" type="video/webm">
+      </video>
+    </div>
+
+    <script>
+      var canvas, context, video;
+      video = document.getElementsByTagName("video")[0];
+      canvas = document.getElementsByTagName("canvas")[0];
+      context = canvas.getContext("2d");
+      context.beginPath();
+      // speech bubble
+      context.moveTo(75,25);
+      context.quadraticCurveTo(25,25,25,62.5);
+      context.quadraticCurveTo(25,100,50,100);
+      context.quadraticCurveTo(100,120,100,125);
+      context.quadraticCurveTo(90,120,65,100);
+      context.quadraticCurveTo(125,100,125,62.5);
+      context.quadraticCurveTo(125,25,75,25);
+      // outer circle
+      context.arc(180,90,50,0,Math.PI*2,true);
+      context.moveTo(215,90);
+      // mouth
+      context.arc(180,90,30,0,Math.PI,false);
+      context.moveTo(170,65);
+      // eyes
+      context.arc(165,65,5,0,Math.PI*2,false);
+      context.arc(195,65,5,0,Math.PI*2,false);
+      context.clip();
+      video.addEventListener("play", drawFrame, false);
+
+      function drawFrame() {
+        context.drawImage(video, 0, 0, 360, 240);
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(drawFrame);
+      }
+    </script>
+  </body>
+</html>

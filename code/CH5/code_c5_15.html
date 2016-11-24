@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 15</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 15</h1>
+
+      <div style="padding: 50px; background-color: #090909;">
+        <video autoplay style="vertical-align: bottom;" width="360">
+          <source src="video/HelloWorld.mp4"  type="video/mp4">
+          <source src="video/HelloWorld.webm" type="video/webm">
+        </video>
+        <br/>
+        <canvas id="reflection" width="360" height="55" style="vertical-align: top;"></canvas>
+      </div>
+    </div>
+
+    <script>
+      var context, rctxt, video;
+      video = document.getElementsByTagName("video")[0];
+      reflection = document.getElementById("reflection");
+      rctxt = reflection.getContext("2d");
+      // flip canvas
+      rctxt.translate(0,160);
+      rctxt.scale(1,-1);
+      // create gradient
+      gradient = rctxt.createLinearGradient(0, 105, 0, 160);
+      gradient.addColorStop(0, "rgba(255, 255, 255, 1.0)");
+      gradient.addColorStop(1, "rgba(255, 255, 255, 0.3)");
+      rctxt.fillStyle = gradient;
+      rctxt.rect(0, 105, 360, 160);
+      video.addEventListener("play", paintFrame, false);
+
+      function paintFrame() {
+        // draw frame, and fill with the opacity gradient mask
+        rctxt.drawImage(video, 0, 0, 360, 160);
+        rctxt.globalCompositeOperation = "destination-out";
+        rctxt.fill();
+        // restore composition operation for next frame draw
+        rctxt.globalCompositeOperation = "source-over";
+        if (video.paused || video.ended) {
+          return;
+        }
+        requestAnimationFrame(paintFrame);
+      }
+    </script>
+  </body>
+</html>

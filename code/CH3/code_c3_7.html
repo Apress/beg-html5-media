@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 7</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 7</h1>
+
+        <video controls width="400">
+            <source src="video/Waterfall.mp4" type="video/mp4"/>
+            <source src="video/Waterfall.webm" type="video/webm"/>
+        </video>
+        
+        <p>CurrentTime on load: <span id="currentTime_first"></span>.</p>
+        <p>CurrentTime after timeupdate: <span id="currentTime_timeupdate"></span>.</p>
+        <p>CurrentTime after ended: <span id="currentTime_ended"></span>.</p>
+    </div>
+
+    <script type="text/javascript">
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("currentTime_first");
+        var span2 = document.getElementById("currentTime_timeupdate");
+        var span3 = document.getElementById("currentTime_ended");
+
+        span1.innerHTML = video.currentTime;
+        function span2Update(evt) {
+            span2.innerHTML = video.currentTime;
+            video.removeEventListener("timeupdate", span2Update, false);
+        }
+        function span3Update(evt) {  span3.innerHTML = video.currentTime; }
+        function timeupdatecallback(evt) {
+            if (video.currentTime > video.duration/3) {
+                video.currentTime = 2*video.duration/3;
+                video.removeEventListener("timeupdate", timeupdatecallback, false);
+                video.addEventListener("timeupdate", span2Update, false);
+            }     
+        }
+
+        video.addEventListener("timeupdate", timeupdatecallback, false);
+        video.addEventListener("ended", span3Update, false);
+    </script>
+
+</body>
+</html>

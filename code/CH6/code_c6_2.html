@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 2</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 2</h1>
+    <p>The parameters of the audio context.<p>
+    <div id="display"></div>
+
+    <script>
+      var display = document.getElementById("display");
+      var context = new (window.AudioContext || window.webkitAudioContext)();
+      display.innerHTML  = context.sampleRate + " sampling rate<br/>";
+      display.innerHTML += context.destination.numberOfChannels
+                                               + " output channels<br/>";
+      display.innerHTML += context.currentTime + " currentTime<br/>";
+      display.innerHTML += context.state + " state<br/>";
+    </script>
+  </body>
+</html>

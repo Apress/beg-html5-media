@@ -1,0 +1,207 @@
+WEBVTT FILE
+
+1
+00:00:08.124 --> 00:00:10.742
+Workstations und hoch-qualitative PCs sind nun schon
+
+2
+00:00:10.742 --> 00:00:14.749
+seit mehr als 15 Jahren fähig, digital Audiodaten zu manipulieren.
+
+3
+00:00:14.749 --> 00:00:17.470
+Es sind nun gerade mal fünf Jahre, dass eine vernünftige Workstation fähig ist,
+
+4
+00:00:17.470 --> 00:00:21.643
+rohe Videodaten ohne viel Spezial-Hardware zu handhaben.
+
+5
+00:00:21.643 --> 00:00:25.400
+Aber heutzutage haben selbst die billigsten Universalcomputer
+
+6
+00:00:25.400 --> 00:00:28.092
+ausreichend Prozessor- und Speicher-Fähigkeiten um mit rohen Videodaten
+
+7
+00:00:28.092 --> 00:00:30.479
+ohne größere Probleme umgehen zu können.
+
+8
+00:00:30.479 --> 00:00:33.579
+Da nun jeder Zugang hat zu solcher billigen und fähigen Hardware,
+
+9
+00:00:33.579 --> 00:00:36.651
+ist es nicht überraschend, dass mehr Menschen interessante Dinge
+
+10
+00:00:36.651 --> 00:00:39.908
+mit digitalen Medien unternehmen wollen - insbesondere Streaming.
+
+11
+00:00:39.908 --> 00:00:44.017
+YouTube war der erste große Erfolg und jeder möchte jetzt daran teilhaben.
+
+12
+00:00:44.017 --> 00:00:47.413
+Gut so! Denn dieses Zeug macht sehr viel Spass!
+
+13
+00:00:48.250 --> 00:00:51.179
+Es ist kein Problem, Benutzer für digitale Medien zu finden.
+
+14
+00:00:51.179 --> 00:00:54.649
+Aber ich möchte hier die Ingenieure, die Mathematiker, die Hacker,
+
+15
+00:00:54.649 --> 00:00:57.869
+die Menschen ansprechen, die an Entdeckungen interessiert sind,
+
+16
+00:00:57.869 --> 00:01:01.302
+und die Dinge erfinden, und die Technologie selbst erzeugen.
+
+17
+00:01:01.302 --> 00:01:03.282
+Leute nach meinem Herzen.
+
+18
+00:01:04.250 --> 00:01:08.723
+Digitale Medien, insbesondere Kompression, wird als super-elitär wahrgenommen,
+
+19
+00:01:08.723 --> 00:01:12.822
+irgendwie extrem schwieriger als alles andere in den Computerwissenschaften.
+
+20
+00:01:12.822 --> 00:01:15.700
+Den großen Spielern in der Industrie in diese Gebiet ist diese Wahrnehmung ganz recht;
+
+21
+00:01:15.700 --> 00:01:19.734
+sie hilft, die riesige Anzahl ihrer sehr grundlegenden Patente zu rechtfertigen.
+
+22
+00:01:19.734 --> 00:01:23.870
+Sie mögen das Image, dass ihre Medienforscher die besten der besten sind,
+
+23
+00:01:23.870 --> 00:01:27.738
+so sehr viel schlauer als jeder andere, dass ihre brillanten Ideen
+
+24
+00:01:27.738 --> 00:01:29.903
+von Normalsterblichen nicht verstanden werden können.
+
+25
+00:01:30.625 --> 00:01:33.716
+Das ist kompletter Blödsinn.
+
+26
+00:01:35.205 --> 00:01:38.900
+Digitaler Ton und Bild und Streaming und Kompression
+
+27
+00:01:38.900 --> 00:01:42.738
+bieten endlos tiefe und anregende intellektuelle Herausforderungen,
+
+28
+00:01:42.738 --> 00:01:44.662
+genau wie jedes andere Forschungsgebiet.
+
+29
+00:01:44.662 --> 00:01:47.929
+Es scheint elitär, denn so wenige Menschen beschäftigen sich damit.
+
+30
+00:01:47.929 --> 00:01:51.223
+Vielleicht haben sich so wenige Menschen dafür interessiert, da sich so wenige
+
+31
+00:01:51.223 --> 00:01:54.665
+die teure Spezialausrüstung leisten konnten, die benötigt war.
+
+32
+00:01:54.665 --> 00:01:58.792
+Aber heutzutage besitzt fast jeder, der dieses Video ansieht, einen billigen
+
+33
+00:01:58.792 --> 00:02:03.317
+Universalcomputer, der die Fähigkeit hat, mit den großen Jungs zu spielen.
+
+34
+00:02:05.926 --> 00:02:11.108
+Heutzutage gibt es Kämpfe um HTML5 und Browser
+
+35
+00:02:11.108 --> 00:02:13.671
+und Video und offen gegen proprietär.
+
+36
+00:02:13.671 --> 00:02:17.048
+Jetzt ist also ein ziemlich guter Zeitpunkt, sich damit zu beschäftigen.
+
+37
+00:02:17.048 --> 00:02:20.000
+Den besten Start bekommt man wahrscheinlich indem man
+
+38
+00:02:20.000 --> 00:02:22.619
+lernt, die Technologie die wir jetzt haben, zu verstehen.
+
+39
+00:02:23.500 --> 00:02:25.071
+Dies ist eine Einführung.
+
+40
+00:02:25.071 --> 00:02:28.180
+Da es eine Einführung ist, wird eine Tonne von Details nur angeschnitten,
+
+41
+00:02:28.180 --> 00:02:30.882
+so dass das große Bild ein bisschen leichter zu sehen ist.
+
+42
+00:02:30.882 --> 00:02:33.908
+Eine Menge Zuschauer werden längst jenseits dem Niveau sein,
+
+43
+00:02:33.908 --> 00:02:36.378
+über das ich spreche, jedenfalls für den Moment.
+
+44
+00:02:36.378 --> 00:02:39.293
+Auf der anderen Seite werde ich wahrscheinlich zu schnell sein
+
+45
+00:02:39.293 --> 00:02:44.558
+für Leute, die dies zum aller ersten Mal hören - aber keine Panik.
+
+46
+00:02:44.558 --> 00:02:48.629
+Das Wichtigste ist, Ideen mitzunehmen, die wirklich eure Phantasie anregen.
+
+47
+00:02:48.629 --> 00:02:52.497
+Konzentriert euch speziell auf die Terminologie dieser Ideen,
+
+48
+00:02:52.479 --> 00:02:56.078
+denn mit dieser und Google und Wikipedia kann man
+
+49
+00:02:56.078 --> 00:02:57.753
+solange Details ausgraben wie das Interesse anhält.
+
+50
+00:02:57.753 --> 00:03:00.094
+Also, ohne weitere Verzögerung,
+
+51
+00:03:00.094 --> 00:03:03.351
+willkommen zu einem wahnsinnigen neuen Hobby.
+
+

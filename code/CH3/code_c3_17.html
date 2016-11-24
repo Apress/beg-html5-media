@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 17</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 17</h1>
+
+        <video controls autoplay width= "400">
+            <source src="video/ElephantDreams.mp4" type="video/mp4"/>
+            <source src="video/ElephantDreams.webm" type="video/webm"/>
+        </video>
+        
+        <p>Seekable on start: <span id="seekable_first"></span></p>
+        <p>Seekable after loadedmetadata:<span id="seekable_loadedmetadata"></span></p>
+    </div>
+
+    <script type="text/javascript">
+        function printTimeRanges(tr) {
+            if (tr.length == 0) return "none";
+            s = tr.length + ": ";
+            for (i=0; i<tr.length; i++) {
+                s += tr.start(i) + " - " + tr.end(i) + "; ";
+            }
+            return s;
+        }
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("seekable_first");
+        var span2 = document.getElementById("seekable_loadedmetadata");
+
+        span1.innerHTML = printTimeRanges(video.seekable);
+        function span2Update(evt) {
+            span2.innerHTML = printTimeRanges(video.seekable);
+        }
+
+        video.addEventListener("loadedmetadata", span2Update, false);
+    </script>
+
+</body>
+</html>

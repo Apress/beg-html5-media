@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 15</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 15</h1>
+
+        <video controls autoplay width="400">
+            <source src="video/ElephantDreams.mp4" type="video/mp4"/>
+            <source src="video/ElephantDreams.webm" type="video/webm"/>
+        </video>
+        
+        <p>Buffered ranges on load: <span id="buffered_first"></span></p>
+        <p>Buffered ranges after loadedmetadata: <span id="buffered_loadedmetadata"></span></p>
+        <p>Buffered ranges after seeking: <span id="buffered_seeking"></span></p>
+        <p>Buffered ranges after timeupdate: <span id="buffered_timeupdate"></span></p>
+    </div>
+    
+    <script type="text/javascript">
+        function printTimeRanges(tr) {
+            if (tr.length == 0) return "none";
+            s = tr.length + ": ";
+            for (i=0; i<tr.length; i++) {
+                s += tr.start(i) + " - " + tr.end(i) + "; ";
+            }
+            return s;
+        }
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("buffered_first");
+        var span2 = document.getElementById("buffered_loadedmetadata");
+        var span3 = document.getElementById("buffered_seeking");
+        var span4 = document.getElementById("buffered_timeupdate");
+
+        span1.innerHTML = printTimeRanges(video.buffered);
+        function span2Update(evt) {
+            span2.innerHTML = printTimeRanges(video.buffered);
+            video.currentTime = video.duration/2;
+            video.play();
+            span3.innerHTML = printTimeRanges(video.buffered);
+        }
+        function span4Update(evt) {
+            span4.innerHTML = printTimeRanges(video.buffered);
+        }
+
+        video.addEventListener("loadedmetadata", span2Update, false);
+        video.addEventListener("timeupdate", span4Update, false);
+    </script>
+
+</body>
+</html>

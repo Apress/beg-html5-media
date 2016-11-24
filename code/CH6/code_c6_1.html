@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 1</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 1</h1>
+    <p>Oscillator running with square wave of 1kHz.<p>
+    <button>STOP</button>
+
+    <script>
+    // create web audio api context
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // create Oscillator node
+    var oscillator = audioCtx.createOscillator();
+    
+    oscillator.type = 'square';
+    oscillator.frequency.value = 1000; // value in hertz
+
+    oscillator.connect(audioCtx.destination);
+    oscillator.start(0);
+
+    var stop = document.getElementsByTagName('button')[0];
+    stop.addEventListener('click', function() {
+        oscillator.disconnect(audioCtx.destination);
+    });
+    </script>
+  </body>
+</html>

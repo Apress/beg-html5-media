@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 2</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+      div#transcriptText {
+        cursor: pointer;
+        height:300px;
+        overflow-y:scroll;
+        padding:5px;
+        background-color:#FAF9F8;
+        border:2px black solid;
+      }
+      .current {
+         background-color: yellow;
+      }
+      #videoBox {
+         float:left;
+         width: 38%;
+      }
+      #transcriptBox {
+         width:60%;
+         float:right;
+      }
+      #speaking {
+         display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 2</h1>
+
+      <div id="videoBox">
+        <video poster="img/ElephantDreams.png" controls>
+          <source src="video/ElephantDreams.mp4"  type="video/mp4">
+          <source src="video/ElephantDreams.webm" type="video/webm">
+        </video>
+      </div>
+      <div id="speaking" aria-live="rude">
+      </div>
+      <div id="transcriptBox">
+        <h4>Interactive Transcript</h4>
+        <p style="font:small;">Click on text to play video from there.</p>
+        <div id="transcriptText">
+          <p id="c1" class="cue" data-time="0.0" aria-live="rude" tabindex="1">
+            [Screen text: "The orange open movie project presents"]
+          </p>
+          <p id="c2" class="cue" data-time="5.0" aria-live="rude" tabindex="1">
+            [Introductory titles are showing on the background of a water pool with fishes swimming and
+            mechanical objects lying on a stone floor.]
+          </p>
+          <p id="c3" class="cue" data-time="12.0" aria-live="rude" tabindex="1">
+            [Screen text: "Elephant's Dream"]
+          </p>
+          <p id="c4" class="cue" data-time="15.0" tabindex="1">
+            Proog: At the left we can see...  At the right we can see the... the head-snarlers.
+            Everything is safe. Perfectly safe. Emo? Emo!
+          </p>
+          <p id="c5" class="cue" data-time="28.0" tabindex="1">
+            Proog: Watch out!
+          </p>
+          <p id="c6" class="cue" data-time="30.0" aria-live="rude" tabindex="1">
+            [The old man, Proog, shoves the younger and less experienced Emo on the ground to save him from
+            being mowed down by a barrage of jack plugs that whir back and forth between the two massive
+            switch-board-like walls.]
+          </p>
+          <p id="c7" class="cue" data-time="38.0" aria-live="rude" tabindex="1">
+            [Two people stand on a small bridge.]
+          </p>
+          <p id="c8" class="cue" data-time="40.0" aria-live="rude" tabindex="1">
+            [The plugs are oblivious of the two, endlessly channeling streams of bizarre sounds and data.]
+          </p>
+          <p id="c9" class="cue" data-time="47.0">
+            Proog: Are you hurt?
+          </p>
+          <p id="c10" class="cue" data-time="49.0" aria-live="rude" tabindex="1">
+            [Emo sits on the bridge and checks his limbs.]
+          </p>
+          <p id="c11" class="cue" data-time="52.0" tabindex="1">
+            Emo: I don't think so. You?
+          </p>
+          <p id="c12" class="cue" data-time="55.0" tabindex="1">
+            Proog: I'm Ok.
+          </p>
+          <p id="c13" class="cue" data-time="57.0" tabindex="1">
+            Proog: Get up. Emo, it's not safe here. Let's go.
+          </p>
+          <p id="c14" class="cue" data-time="63.0" tabindex="1">
+            Emo: What's next?
+          </p>
+          <p id="c15" class="cue" data-time="65.0" tabindex="1">
+            Proog: You'll see!
+          </p>
+          <p id="c16" class="cue" data-time="69.0" aria-live="rude" tabindex="1">
+            [After the squealing plugs move on, Proog makes sure that Emo is unharmed and urges him onwards
+            through a crack in one of the plug-walls.]
+          </p>
+          <p id="c17" class="cue" data-time="76.0">
+            Proog: Emo. This way.
+          </p>
+          <p id="c18" class="cue" data-time="78.0" aria-live="rude" tabindex="1">
+            [They walk through the narrow hall into a massive room that fades away into blackness on all sides.
+            Only one path is visible, suspended in mid-air that runs between thousands of dangling electric
+            cables on which sit crowds of robin-like robotic birds.]
+          </p>
+          <p id="c19" class="cue" data-time="94.0">
+            Proog: Follow me!
+          </p>
+          <p id="c20" class="cue" data-time="96.0" aria-live="rude" tabindex="1">
+            [As Proog and Emo enter the room, the birds begin to wake up and notice them. Realizing the danger,
+            Proog grabs Emo by the arm. They run along the increasingly bizarre path as the birds begin to swarm.
+            All sound is blocked out by the birds which are making the same noises as the jack-plugs, garbled
+            screaming and obscure sentences and static.]
+          </p>
+          <p id="c21" class="cue" data-time="131.0">
+            Proog: Hurry Emo!
+          </p>
+          <p id="c22" class="cue" data-time="133.0" aria-live="rude" tabindex="1">
+            [The path dead-ends, stopping in the middle of no-where above the infinite drop. Proog turns around as
+            the birds reach them and begin to dive-bomb at them. At the last moment, Proog takes out an old candlestick
+            phone and the birds dive into the speaker piece. The screen cuts to black.]
+          </p>
+          <p id="c23" class="cue" data-time="151.0" aria-live="rude" tabindex="1">
+            [In the next scene, Proog stands at one end of a room, suspiciously watching what is probably the same
+            candlestick phone, which is ringing. Emo watches from the other side of the room. The phone continues
+            to ring. After a while Emo approaches it to answer it, but Proog slaps his hand away.]
+          </p>
+          <p id="c24" class="cue" data-time="168.0" tabindex="1">
+            Proog: You're not paying attention!
+          </p>
+          <p id="c25" class="cue" data-time="170.0" tabindex="1">
+            Emo: I just want to answer the...phone.
+          </p>
+          <p id="c26" class="cue" data-time="175.0" tabindex="1">
+            Proog: Emo, look, I mean listen. You have to learn to listen. This is not some game. You, I mean we,
+            we could easily die out here.
+          </p>
+          <p id="c27" class="cue" data-time="178.0" aria-live="rude" tabindex="1">
+            [Proog takes the ear-piece off the hook.]
+          </p>
+          <p id="c28" class="cue" data-time="190.0" tabindex="1">
+            Proog: Listen, listen to the sounds of the machine.
+          </p>
+          <p id="c29" class="cue" data-time="193.0" aria-live="rude" tabindex="1">
+            [The phone speaker reveals a mass of clawed, fleshy polyps which scream and gibber obscenely.]
+          </p>
+          <p id="c30" class="cue" data-time="198.0" tabindex="1">
+            Proog: Listen to your breathing.
+          </p>
+          <p id="c31" class="cue" data-time="205.0" aria-live="rude" tabindex="1">
+            [There is a solemn silence as Emo looks around the room and the technical objects therein. Emo laughs
+            disbelievingly and Proog walks away.]
+          </p>
+          <p id="c32" class="cue" data-time="226.0" aria-live="rude" tabindex="1">
+            [In the next scene, the two enter another massive black room. There is no path, the entry platform is
+            the only structure that seems to be there except for another exit, lit distantly at the far side. Proog
+            takes a step forward into the void, and his feet are suddenly caught by giant typewriter arms that rocket
+            up out of the blackness to catch his feet as he dances across mid-air. Emo follows Proog with somewhat
+            less enthusiasm as the older man leads the way.]
+          </p>
+          <p id="c33" class="cue" data-time="267.0" tabindex="1">
+            Emo: Well, don't you ever get tired of this?
+          </p>
+          <p id="c34" class="cue" data-time="269.0" tabindex="1">
+            Proog: Tired?!? Emo, the machine is like clockwork. One move out of place and you're ground to a pulp.
+          </p>
+          <p id="c35" class="cue" data-time="280.0" tabindex="1">
+            Emo: But isn't it -
+          </p>
+          <p id="c36" class="cue" data-time="282.0" tabindex="1">
+            Proog: Pulp, Emo! Is that what you want, pulp? Emo, your goal in life...pulp?
+          </p>
+          <p id="c37" class="cue" data-time="292.0" aria-live="rude" tabindex="1">
+            [They reach the end of the room and go through a hall into a small compartment. Proog presses a button,
+            and the door shuts. It is an elevator. The elevator lurches suddenly as it is grabbed by a giant mechanical
+            arm and thrown upwards, rushing up through an ever-widening tunnel. When it begins to slow down, another
+            arm grabs the capsule and throws it even further up. As it moves up, the walls unlock and fall away,
+            leaving only the floor with the two on it, rushing higher and higher.]
+          </p>
+          <p id="c38" class="cue" data-time="341.0" tabindex="1">
+            Proog: Emo, close your eyes.
+          </p>
+          <p id="c39" class="cue" data-time="344.0" tabindex="1">
+            Emo: Why?
+          </p>
+          <p id="c40" class="cue" data-time="345.0" tabindex="1">
+            Proog: - Now!
+          </p>
+          <p id="c41" class="cue" data-time="351.0" tabindex="1">
+            Emo: Ok.
+          </p>
+          <p id="c42" class="cue" data-time="353.0" tabindex="1">
+            Proog: Good.
+          </p>
+          <p id="c43" class="cue" data-time="354.0" aria-live="rude" tabindex="1">
+            [They exit the tunnel into a black sky and the platform reaches the peak of its arc.]
+          </p>
+          <p id="c44" class="cue" data-time="359.0" tabindex="1">
+            Proog: What do you see at your left side, Emo?
+          </p>
+          <p id="c45" class="cue" data-time="364.0" tabindex="1">
+            Emo: Nothing.
+          </p>
+          <p id="c46" class="cue" data-time="365.0" tabindex="1">
+            Proog: - Really?
+          </p>
+          <p id="c47" class="cue" data-time="366.0" tabindex="1">
+            Emo: No, nothing at all.
+          </p>
+          <p id="c48" class="cue" data-time="367.0" tabindex="1">
+            Proog: Really? And at your right, what do you see at your right side, Emo?
+          </p>
+          <p id="c49" class="cue" data-time="373.0" tabindex="1">
+            Emo: The same Proog, exactly the same ...nothing!
+          </p>
+          <p id="c50" class="cue" data-time="377.0" tabindex="1">
+            Proog: - Great.
+          </p>
+          <p id="c51" class="cue" data-time="379.0" aria-live="rude" tabindex="1">
+            [The elevator begins to drop down another shaft, coming to rest as it slams into the floor of another
+            room and bringing the two to a level stop. A camera flashes. They are in a large, dingy room filled
+            with strange, generator-like devices and dotted with boxy holographic projectors. One of them is
+            projecting a portion of wall with a door in it right beside them. The door seems harmless enough.]
+          </p>
+          <p id="c52" class="cue" data-time="400.0" tabindex="1">
+            Emo: Listen Proog! Do you hear that!
+          </p>
+          <p id="c53" class="cue" data-time="402.0" aria-live="rude" tabindex="1">
+            [From behind the door comes light music.]
+          </p>
+          <p id="c54" class="cue" data-time="403.0" tabindex="1">
+            Emo: Can we go here?
+          </p>
+          <p id="c55" class="cue" data-time="404.0" tabindex="1">
+            Proog: There? It isn't safe, Emo.
+          </p>
+          <p id="c56" class="cue" data-time="409.0" tabindex="1">
+            Emo: But...
+          </p>
+          <p id="c57" class="cue" data-time="410.0" tabindex="1">
+            Proog: - Trust me, it's not.
+          </p>
+          <p id="c58" class="cue" data-time="413.0" tabindex="1">
+            Emo: Maybe I could...
+          </p>
+          <p id="c59" class="cue" data-time="414.0" tabindex="1">
+            Proog: No... NO!
+          </p>
+          <p id="c60" class="cue" data-time="416.0" aria-live="rude" tabindex="1">
+            [Proog presses a button on his cane, which changes the holograph to another wall.]
+          </p>
+          <p id="c61" class="cue" data-time="420.0" tabindex="1">
+            Proog: Any further questions, Emo?
+          </p>
+          <p id="c62" class="cue" data-time="423.0" tabindex="1">
+            Emo: No.
+          </p>
+          <p id="c63" class="cue" data-time="425.0" aria-live="rude" tabindex="1">
+            [Proog finishes the wall, and boxes them into a Safe Room, out of the view of anything outside.]
+          </p>
+          <p id="c64" class="cue" data-time="429.0" tabindex="1">
+            Proog: Emo?
+          </p>
+          <p id="c65" class="cue" data-time="431.0" tabindex="1">
+            Proog: Emo, why...Emo......why can't you see the beauty of this place? The way it works. How perfect it is.
+          </p>
+          <p id="c66" class="cue" data-time="443.0" tabindex="1">
+            Emo: No, Proog, I don't see. I don't see because there's nothing there. And why should I trust my
+            life to something that isn't there? Well can you tell me that? Answer me!
+          </p>
+          <p id="c67" class="cue" data-time="459.0" aria-live="rude" tabindex="1">
+            [Proog slaps him, trying to bring him to his senses.]
+          </p>
+          <p id="c68" class="cue" data-time="462.0" tabindex="1">
+            Emo: Proog......you're a sick man! Stay away from me!
+          </p>
+          <p id="c69" class="cue" data-time="465.0" aria-live="rude" tabindex="1">
+            [Emo storms away down the length of the room towards a wall he apparently cannot see and the wall begins
+            to move, extending the length of the room.]
+          </p>
+          <p id="c70" class="cue" data-time="472.0" tabindex="1">
+            Proog: No! Emo! It's a trap!
+          </p>
+          <p id="c71" class="cue" data-time="475.0" tabindex="1">
+            Emo: Hah, it's a trap. At the left side you can see the hanging gardens of Babylon!
+          </p>
+          <p id="c72" class="cue" data-time="478.0" aria-live="rude" tabindex="1">
+            [The walls begin to discolour and mechanical roots start tearing through the walls to his left.]
+          </p>
+          <p id="c73" class="cue" data-time="481.0" tabindex="1">
+            Emo: How's that for a trap?
+          </p>
+          <p id="c74" class="cue" data-time="485.0" tabindex="1">
+            Proog: No, Emo.
+          </p>
+          <p id="c75" class="cue" data-time="487.0" aria-live="rude" tabindex="1">
+            [The roots move forwards toward Proog.]
+          </p>
+          <p id="c76" class="cue" data-time="489.0" tabindex="1">
+            Emo: At the right side you can see...well guess what...the colossus of Rhodes!
+          </p>
+          <p id="c77" class="cue" data-time="495.0" tabindex="1">
+            Proog: No!
+          </p>
+          <p id="c78" class="cue" data-time="496.0" tabindex="1">
+            Emo: The colossus of Rhodes and it is here just for you Proog.
+          </p>
+          <p id="c79" class="cue" data-time="502.0" aria-live="rude" tabindex="1">
+            [The rest of the safety wall crumples away as a pair of massive hands heave out of the ground and begin
+            to attack. Proog is knocked down by the shockwave, while Emo turns and begins to walk away, waving his
+            finger around his temple in the 'crazy' sign. In a last effort, Proog extricates himself from the tentacle
+            roots, and cracks Emo over the back of the head with his cane. As Emo collapses, everything falls away,
+            and Proog and Emo are left in one tiny patch of light in the middle of blackness.]
+          </p>
+          <p id="c80" class="cue" data-time="531.0" tabindex="1">
+            Proog: It is there...I'm telling you, Emo...it is.
+          </p>
+          <p id="c81" class="cue" data-time="540.0" aria-live="rude" tabindex="1">
+            [The scene fades to black while panning over a pile of tentacle roots lying on the ground.]
+          </p>
+          <p id="c82" class="cue" data-time="566.0" aria-live="rude" tabindex="1">
+            [Credits begin:]
+          </p>
+          <p id="c83" class="cue" data-time="568.0" aria-live="rude" tabindex="1">
+            [Orange Open Movie Team<br>
+            Director: Bassum Kurdali<br>
+            Art Director: Andreas Goralczyk<br>
+            Music and Sound Design: Jan Morgenstern<br>
+            Emo: Cas Jansen<br>
+            Proog: Tygo Gernandt<br>
+            Screenplay: Pepijn Zwanenberg<br>
+            Original Concept &amp; Scenario: Andreas Goralczyk, Bassam Kurdali, Ton Roosendaal
+            ]
+          </p>
+          <p id="c84" class="cue" data-time="590.0" aria-live="rude" tabindex="1">
+            [More people for:<br>
+            Additional Artwork and Animation<br>
+            Texture Photography<br>
+            Software Development<br>
+            3D Modelling, Animation, Rendering, Compiling Software<br>
+            Special Thanks to Open Source Projects<br>
+            Rendering Services Provided<br>
+            Hardware  Sponsored<br>
+            Casting<br>
+            Sound FX, Foley, Dialogue Editing, Audio Mix and Post<br>
+            Voice Recording<br>
+            HDCam conversion<br>
+            Netherlands Media Art Institute Staff<br>
+            Blender Foundation Staff
+            ]
+          </p>
+          <p id="c85" class="cue" data-time="626.0" aria-live="rude" tabindex="1">
+            [Many Thanks to our Donation and DVD sponsors]
+          </p>
+          <p id="c86" class="cue" data-time="630.0" aria-live="rude" tabindex="1">
+            [Elephants Dream has been realised with financial support from<br>
+            * The Netherlands Film Fund<br>
+            * Mondriaan Foundation<br>
+            * VSBfonds<br>
+            * Uni-Verse / EU Sixth Framework Programme
+            ]
+          </p>
+          <p id="c87" class="cue" data-time="642.0" aria-live="rude" tabindex="1">
+            [Produced By:<br>
+            Ton Roosendaal<br>
+            Copyright 2006<br>
+            Netherlands Media Art Institute / Montevideo<br>
+            Blender Foundation
+            ]
+          </p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        // get video element
+        var video = document.getElementsByTagName("video")[0];
+        var transcript = document.getElementById("transcriptBox");
+        var trans_text = document.getElementById("transcriptText");
+        var speaking = document.getElementById("speaking");
+        var current = -1;
+        
+        // register events for the clicks on the text
+        var cues = document.getElementsByClassName("cue");
+        for (var i=0; i<cues.length; i++) {
+          cues[i].addEventListener("click", function(evt) {
+            var start = parseFloat(this.getAttribute("data-time"));
+            video.currentTime = start;
+            video.play();
+          }, false);
+        }
+        
+        // pause video as you mouse over transcript
+        transcript.addEventListener("mouseover", function(evt) {
+          video.pause();
+        }, false);
+        
+        // scroll to text as video time changes
+        video.addEventListener("timeupdate", function(evt) {
+          if (video.paused || video.ended) {
+            return;
+          }
+          // scroll to currently playing time offset
+          for (var i=0; i<cues.length; i++) {
+            var cueTime = cues[i].getAttribute("data-time");
+            if (cues[i].className.indexOf("current") == -1 &&
+                video.currentTime >= parseFloat(cueTime) &&
+                video.currentTime < parseFloat(cueTime)) {
+              trans_text.scrollTop = 
+                cues[i].offsetTop - trans_text.offsetTop;
+              if (current >= 0) {
+                  cues[current].classList.remove("current");
+              }
+              cues[i].className += " current";
+              current = i;
+              if (cues[i].getAttribute("aria-live") == "rude") {
+                speaking.innerHTML = cues[i].innerHTML;
+              }
+            }
+          }
+        }, false);
+      };
+    </script>
+  </body>
+</html>

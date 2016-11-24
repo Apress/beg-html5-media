@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 11</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 11</h1>
+    <p>Draw frequency-gain graph.<p>
+    <canvas width="600" height="200"></canvas>
+    <canvas width="600" height="200" style="display: none;"></canvas>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    var canvas = document.getElementsByTagName('canvas')[0];
+    var ctxt = canvas.getContext('2d');
+    var scratch = document.getElementsByTagName('canvas')[1];
+    var sctxt = scratch.getContext('2d');
+
+    var dbScale = 60;
+    var width = 512;
+    var height = 200;
+    var pixelsPerDb = (0.5 * height) / dbScale;
+    var nrOctaves = 10;
+    var nyquist = 0.5 * audioCtx.sampleRate;
+
+    function dbToY(db) {
+      var y = (0.5 * height) - pixelsPerDb * db;
+      return y;
+    }
+
+    function drawAxes() {
+      ctxt.textAlign = "center";
+      
+      // Draw frequency scale (x-axis).
+      for (var octave = 0; octave <= nrOctaves; octave++) {
+        var x = octave * width / nrOctaves;
+        var f = nyquist * Math.pow(2.0, octave - nrOctaves);
+        var value = f.toFixed(0);
+        var unit = 'Hz';
+        if (f > 1000) {
+          unit = 'KHz';
+          value = (f/1000).toFixed(1);
+        }
+        ctxt.strokeStyle = "black";
+        ctxt.strokeText(value + unit, x, 20);
+
+        ctxt.beginPath();
+        ctxt.strokeStyle = "gray";
+        ctxt.lineWidth = 1;
+        ctxt.moveTo(x, 30);
+        ctxt.lineTo(x, height);
+        ctxt.stroke();
+      }
+
+      // Draw decibel scale (y-axis).
+      for (var db = -dbScale; db < dbScale - 10; db += 10) {
+          var y = dbToY(db);
+          ctxt.strokeStyle = "black";
+          ctxt.strokeText(db.toFixed(0) + "dB", width + 40, y);
+
+          ctxt.beginPath();
+          ctxt.strokeStyle = "gray";
+          ctxt.moveTo(0, y);
+          ctxt.lineTo(width, y);
+          ctxt.stroke();
+      }
+
+      // save this drawing to the scratch canvas.
+      sctxt.drawImage(canvas, 0, 0);
+    }
+
+    drawAxes();
+    </script>
+  </body>
+</html>

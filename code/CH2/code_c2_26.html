@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 2: example 26</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+    video {
+    	width: 400px;
+    }
+    </style>
+  </head>
+
+<body>
+<div class="container"> 
+
+  <h1>Beginning HTML5 media</h1>
+  <h2>The basic code:</h2>
+  <p>Here is an example of a video element with versions of different screen sizes and codecs:</p>
+  
+  <video poster="img/BabyVulture.jpg" controls>
+     <source src="video/Vultures.mp4" media="screen and (min-width:800px)" type='video/mp4' />
+     <source src="video/Vultures-small.mp4" media="screen and (max-width:799px)" type='video/mp4' />
+     <source src="video/Vultures.webm" media="screen and (min-width:800px)" type='video/webm' />
+     <source src="video/Vultures-small.webm" media="screen and (max-width:799px)" type='video/webm' />
+  </video>
+   
+   
+</div>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 21</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+    #player {
+      padding: 10px;
+      border:    1px solid gray;
+      box-sizing: content-box;
+      max-width: 840px;
+    }
+    #positionview {
+      width: 800px;
+      height: 30px;
+      margin-top: 5px;
+    }
+    #transportbar {
+      height: 10px;
+      width: 700px;
+      position: relative;
+      float: left;
+      border: 2px solid gray;
+    }
+    #position {
+      background: #D7BC28;
+      height: 10px;
+      width: 0px;
+    }
+    #time {
+      position: relative;
+      float: right;
+    }
+    #video {
+      position: relative;
+      float: left;
+      padding: 0;
+      margin: 0;
+    }
+    #volumecontrol {
+      position: relative;
+      float: right;
+      padding-left: 10px;
+    }
+    #volumebar {
+      position:relative;
+      height: 425px;
+      width: 10px;
+      border: 2px solid gray;
+      margin-left: 5px;
+      margin-bottom: 5px;
+    }
+    #volume {
+      position:absolute;
+      height: 425px;
+      width: 10px;
+      background: rgb(239, 90, 52);
+    }
+    #volume.disabled {
+      background:#ccc;
+    }
+    #controls div {
+      display:inline;
+      margin-right: 10px;
+    }
+    #controls div input {
+      background:url('img/buttons.png') no-repeat top left;
+      border:none;
+      height: 68px;
+      width: 69px;
+      display: inline-block;
+    }
+    #controls div #repeat {
+      background-position:0 -456px;
+    }
+    #controls div #stop {
+      background-position:0 -152px;
+    }
+    #controls div #louder {
+      background-position:0 -228px;
+    }
+    #controls div #quieter {
+      background-position:0 -304px;
+    }
+    #controls div #mute {
+      background-position:0 -380px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 21</h1>
+      <div id="player">
+        <div id="video">
+          <video width="800" height="450" poster="img/BabyVulture.jpg">
+            <source src="video/Vultures.mp4"  type="video/mp4"/>
+            <source src="video/Vultures.webm" type="video/webm"/>
+          </video>
+          <div id="positionview">
+            <div id="transportbar"><div id="position"></div></div>
+            <div id="time">
+              <span id="curTime">00:00</span> / <span id="duration">00:00</span>
+            </div>
+          </div>
+        </div>
+        <div id="volumecontrol">
+          <div id="volumebar"><div id="volume"></div></div>
+          <div id="vol"></div>
+        </div>
+        <div style="clear: both;"></div>
+        <div id="controls">
+          <div><input id="play"    type="image" src="img/0.gif" alt="Play"></div>
+          <div><input id="repeat"  type="image" src="img/0.gif" alt="Repeat"></div>
+          <div><input id="stop"    type="image" src="img/0.gif" alt="Stop"></div>
+          <div><input id="louder"  type="image" src="img/0.gif" alt="Louder"></div>
+          <div><input id="quieter" type="image" src="img/0.gif" alt="Quieter"></div>
+          <div><input id="mute"    type="image" src="img/0.gif" alt="Mute"></div>
+        </div>
+      </div>
+      <p>
+        Design inspiration and buttons from 
+        <a href="http://icant.co.uk/easy-youtube/">http://icant.co.uk/easy-youtube/</a><br/>
+        Thanks go to Chris Heilmann
+      </p>
+    </div>
+    <script type="text/javascript">
+      var video     = document.getElementsByTagName("video")[0];
+      var position  = document.getElementById("position");
+      var curTime   = document.getElementById("curTime");
+      var duration  = document.getElementById("duration");
+      var volume    = document.getElementById("volume");
+      var vol       = document.getElementById("vol");
+      var play      = document.getElementById("play");
+      var repeat    = document.getElementById("repeat");
+      var stop      = document.getElementById("stop");
+      var louder    = document.getElementById("louder");
+      var quieter   = document.getElementById("quieter");
+      var mute      = document.getElementById("mute");
+      
+      video.addEventListener("loadedmetadata", init, false);
+      function init(evt) {
+        duration.innerHTML = video.duration.toFixed(2);
+        vol.innerHTML      = video.volume.toFixed(2);
+      }
+      
+      video.addEventListener("timeupdate", curTimeUpdate, false);
+      function curTimeUpdate(evt) {
+        curTime.innerHTML = video.currentTime.toFixed(2);
+        position.style.width = 700*video.currentTime/video.duration + "px";
+      }
+      
+      video.addEventListener("volumechange", dispVol, false);
+      function dispVol(evt) {
+        vol.innerHTML = video.volume.toFixed(2);
+      }
+      
+      play.addEventListener("click", togglePlay, false);
+      function togglePlay(evt) {
+        if (video.paused == false) {
+          video.pause();
+          play.style.backgroundPosition = "0 0";
+        } else {
+          video.play();
+          play.style.backgroundPosition = "0 -75px";
+        }
+      }
+
+      repeat.addEventListener("click", rewind, false);
+      function rewind(evt) {
+        video.currentTime = video.currentTime - 2.0;
+      }
+
+      stop.addEventListener("click", restart, false);
+      function restart(evt) {
+        video.pause();
+        play.style.backgroundPosition = "0 0";
+        video.currentTime = 0;
+      }
+
+      louder.addEventListener("click", volInc, false);
+      function volInc(evt) {
+        changeVolume(video.volume + 0.1);
+      }
+      
+      quieter.addEventListener("click", volDec, false);
+      function volDec(evt) {
+        changeVolume(video.volume - 0.1);
+      }
+      
+      mute.addEventListener("click", toggleMute, false);
+      function toggleMute(evt) {
+        video.muted = !video.muted;
+        if (video.muted) {
+          volume.className = 'disabled';
+        } else {
+          volume.className = '';
+        }
+      }
+      
+      function changeVolume(changeTo) {
+        if (video.muted){
+          toggleMute();
+        }
+        if (changeTo > 1.0) {
+          changeTo = 1.0;
+        } else if (changeTo < 0.0) {
+          changeTo = 0.0;
+        }
+        volume.style.height = 425*changeTo +'px';
+        volume.style.marginTop = 425-(425*changeTo) + 'px';
+        video.volume = changeTo;
+      }
+    </script>
+  </body>
+</html>

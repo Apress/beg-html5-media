@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 9</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 9</h1>
+    <p>Decaying echo via gain and delay filters.<p>
+    <audio autoplay controls src="audio/Big%20Hit%201.wav"></audio>
+    <button>STOP</button>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var mediaElement = document.getElementsByTagName('audio')[0];
+    var source = audioCtx.createMediaElementSource(mediaElement);
+    var delay = audioCtx.createDelay();
+    delay.delayTime.value = 0.5;
+
+    var gain = audioCtx.createGain();
+    gain.gain.value = 0.8;
+
+    mediaElement.addEventListener('play', function() {
+      // play once
+      source.connect(audioCtx.destination);
+
+      // create decaying echo filter graph
+      source.connect(delay);
+      delay.connect(gain);
+      gain.connect(delay);
+      gain.connect(audioCtx.destination);
+    });
+
+    var stop = document.getElementsByTagName('button')[0];
+    stop.addEventListener('click', function() {
+        source.disconnect(audioCtx.destination);
+        gain.disconnect(audioCtx.destination);
+    });
+    </script>
+  </body>
+</html>

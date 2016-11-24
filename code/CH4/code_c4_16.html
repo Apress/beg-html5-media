@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 4: example 16</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 4: example 16</h1>
+
+      <video controls poster="img/ElephantDreams.png">
+        <source src="video/ElephantDreams.mp4"  type="video/mp4">
+        <source src="video/ElephantDreams.webm" type="video/webm">
+        <track src="tracks/ElephantDreams_en.vtt" label="English Subs">
+        <track src="tracks/ElephantDreams_jp.vtt" default label="Japanese Subs">
+        <track src="tracks/ElephantDreams_zh.vtt" label="Chinese Subs">
+      </video>
+    </div>
+
+    <script>
+      var video = document.getElementsByTagName("video")[0];
+
+      function loaded() {
+          video.play();
+      }
+      function update() {
+          if (video.currentTime > 19) {
+              video.pause();
+          }
+      }
+      video.addEventListener("loadeddata", loaded, false);
+      video.addEventListener("timeupdate", update, false);
+    </script>
+  </body>
+</html>

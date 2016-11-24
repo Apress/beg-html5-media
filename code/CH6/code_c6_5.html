@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beginning HTML5 media: chapter 6: example 5</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+  <body class="container">
+    <h1>Beginning HTML5 media: chapter 6: example 5</h1>
+    <p>Fetching a audio file into the AudioContext.<p>
+    <button>STOP</button>
+
+    <script>
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var source = audioCtx.createBufferSource();
+
+    var request = new XMLHttpRequest();
+    var url = 'audio/transition.wav';
+
+    function requestData(url) {
+      request.open('GET', url, true);
+      request.responseType = 'arraybuffer';
+      request.send();
+    }
+
+    function receivedData() {
+      if ((request.status === 200 || request.status === 206) 
+          && request.readyState === 4) {
+        var audioData = request.response;
+        audioCtx.decodeAudioData(audioData,
+          function(buffer) {
+            source.buffer = buffer;
+            source.connect(audioCtx.destination);
+            source.loop = true;
+            source.start(0);
+          },
+          function(error) {
+            "Error with decoding audio data" + error.err
+          }
+        );
+      }
+    }
+
+    request.addEventListener('load', receivedData, false);
+    requestData(url);
+
+    var stop = document.getElementsByTagName('button')[0];
+    stop.addEventListener('click', function() {
+        source.disconnect(audioCtx.destination);
+    });
+    </script>
+  </body>
+</html>

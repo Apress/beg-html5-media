@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 5: example 10</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+    <style type="text/css">
+      #ambience {
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: linear;
+        padding: 40px;
+        width: 366px;
+        outline: black solid 10px;
+      }
+      video {
+        padding: 3px;
+        background-color: white;
+      }
+      canvas {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Chapter 5: example 10</h1>
+
+      <div id="ambience">
+        <video controls autoplay height="240" width="360">
+          <source src="video/HelloWorld.mp4"  type="video/mp4">
+          <source src="video/HelloWorld.webm" type="video/webm">
+        </video>
+      </div>
+      <canvas id="scratch" width="320" height="160"></canvas>
+    </div>
+
+    <script>
+      var sctxt, video, ambience;
+      ambience = document.getElementById("ambience");
+      video = document.getElementsByTagName("video")[0];
+      scratch = document.getElementById("scratch");
+      sctxt = scratch.getContext("2d");
+      video.addEventListener("play", paintAmbience, false);
+      function paintAmbience() {
+        // set up scratch frame
+        sctxt.drawImage(video, 0, 0, 360, 240);
+        frame = sctxt.getImageData(0, 0, 360, 240);
+        // get average color for frame and transition to it
+        color = getColorAvg(frame);
+        ambience.style.backgroundColor =
+          'rgb('+color[0]+','+color[1]+','+color[2]+')';
+        if (video.paused || video.ended) {
+          return;
+        }
+        // don't do it more often than once a second
+        setTimeout(function () {
+            paintAmbience();
+        }, 1000);
+      }
+      function getColorAvg(frame) {
+        r = 0;
+        g = 0;
+        b = 0;
+        // calculate average color from image in canvas
+        for (var i = 0; i < frame.data.length; i += 4) {
+          r += frame.data[i];
+          g += frame.data[i + 1];
+          b += frame.data[i + 2];
+        }
+        r = Math.ceil(r / (frame.data.length / 4));
+        g = Math.ceil(g / (frame.data.length / 4));
+        b = Math.ceil(b / (frame.data.length / 4));
+        return Array(r, g, b);
+      }
+    </script>
+  </body>
+</html>

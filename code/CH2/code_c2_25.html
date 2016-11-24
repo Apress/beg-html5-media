@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 2: example 25</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+<body>
+<div class="container"> 
+
+  <h1>Beginning HTML5 media</h1>
+  <h2>The basic code:</h2>
+  <p>Here is an example that shows which audio MIME types a browser supports:</p>
+  
+  <ul>
+	  <script type="text/javascript">
+	    var types = new Array();
+	    types[0] = "audio/ogg";
+	    types[1] = "audio/ogg; codecs=vorbis";
+	    types[2] = "audio/mpeg";
+	    types[3] = "audio/mpeg; codecs=mp3";
+	    types[4] = "audio/wav";
+	    types[5] = "audio/wav; codecs=1";
+	    types[6] = "audio/mp4";
+	    types[7] = "audio/mp4; codecs=mp4a.40.2";
+	    types[8] = "audio/x-m4b";
+	    types[9] = "audio/x-m4b; codecs=aac";
+	    types[10] = "audio/x-m4p";
+	    types[11] = "audio/x-m4p; codecs=aac";
+	    types[12] = "audio/aac";
+	    types[13] = "audio/aac; codecs=aac";
+	    types[14] = "audio/x-aac";
+	    types[15] = "audio/x-aac; codecs=aac";
+	    types[16] = "audio/ogg";
+	    types[17] = "audio/ogg; codecs=opus";
+
+	    // create a audio element
+	    var audio = document.createElement('audio');
+	    // test types
+	    for (i=0; i<types.length; i++) {
+	      var support = audio.canPlayType(types[i]);
+	      if (support == "") support="no";
+	      document.write("<li><b>"+types[i]+"</b> : "+support+"</li>");
+	    }
+	  </script>
+  </ul>
+    
+</div>
+
+</body>
+</html>

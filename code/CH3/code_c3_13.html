@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beginning HTML5 media: chapter 3: example 13</title>
+    <link rel="stylesheet" media="screen" href="style.css" type="text/css"/>
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>Chapter 3: example 13</h1>
+
+        <video controls width="400">
+            <source src="video/Waterfall.mp4" type="video/mp4"/>
+            <source src="video/Waterfall.webm" type="video/webm"/>
+        </video>
+        
+        <p>ReadyState on load: <span id="readyState_first"></span>.</p>
+        <p>ReadyState after loadedmetadata: <span id="readyState_loadedmetadata"></span>.</p>
+        <p>ReadyState after progress: <span id="readyState_progress"></span>.</p>
+        <p>ReadyState after timeupdate: <span id="readyState_timeupdate"></span>.</p>
+    </div>
+
+    <script type="text/javascript">
+        var video = document.getElementsByTagName("video")[0];
+        var span1 = document.getElementById("readyState_first");
+        var span2 = document.getElementById("readyState_loadedmetadata");
+        var span3 = document.getElementById("readyState_progress");
+        var span4 = document.getElementById("readyState_timeupdate");
+
+        span1.innerHTML = video.readyState;
+        function span2Update(evt) {
+            span2.innerHTML = video.readyState;
+        }
+        function span3Update(evt) {
+            span3.innerHTML = video.readyState;
+        }
+        span4 = document.getElementById("readyState_timeupdate");
+        function span4Update(evt) {
+            span4.innerHTML = video.readyState;
+        }
+        video.addEventListener("loadedmetadata", span2Update, false);
+        video.addEventListener("progress", span3Update, false);
+        video.addEventListener("timeupdate", span4Update, false);
+    </script>
+
+</body>
+</html>
